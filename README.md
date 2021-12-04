@@ -1,7 +1,7 @@
 # Minute x Minute
 
 ## Overview
-Minute x Minute is designed for coaches 
+Minute x Minute is designed for coaches and players to have quick access to their practice plans and drills to cut down on practice planning for coaches and for players to come to practice prepared and ready to get to work. 
 
 ## Wireframes, ERD, & Technical Flow Chart
 - https://www.figma.com/file/Xvpfgxz9xSMSeLsvzwfxFt/Minute-x-Minute?node-id=0%3A1
