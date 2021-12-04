@@ -25,6 +25,8 @@ As a player, you will be able to view the next date of practice. As a player, yo
 - Full Crud when accessing via the Coaches Route
 - Admin Authentication and User Authentication specific Routes
 - Search Funtionality for Practices and Drills
+### Features Breakdown
+-https://docs.google.com/document/d/1Tg2ZG0T4SquA-BIkOTslmrg4A_D3ThwO2lP2wF1Jhzk/edit#heading=h.7c7sm89gjs08
 
 ## Screenshots of your project
 
