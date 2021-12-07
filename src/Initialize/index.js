@@ -9,17 +9,45 @@ function Initialize() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
+      if (authed && authed.uid === process.env.REACT_APP_COACH_UID) {
         const userObj = {
           uid: authed.uid,
           fullName: authed.displayName,
           user: authed.email.split('@')[0],
+          profileImage: authed.photoURL,
+          isCoach: true,
         };
         setUser(userObj);
+        console.warn(user); // need to try and resolve issue where user is not being set upon login?
+      } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
+        const userObj = {
+          uid: authed.uid,
+          fullName: authed.displayName,
+          user: authed.email.split('@')[0],
+          profileImage: authed.photoURL,
+          isCoach: false,
+        };
+        setUser(userObj);
+        console.warn(userObj);
       } else if (user || user === null) {
         setUser(null);
+        console.warn(user);
       }
     });
+    //   if (authed) {
+    //     const userObj = {
+    //       uid: authed.uid,
+    //       fullName: authed.displayName,
+    //       user: authed.email.split('@')[0],
+    //       profileImage: authed.photoURL,
+    //       isCoach: process.env.REACT_APP_COACH_UID === authed.uid,
+    //     };
+    //     setUser(userObj);
+    //     console.warn(user); // need to try and resolve issue where user is not being set upon login?
+    //   } else if (user || user === null) {
+    //     setUser(null);
+    //   }
+    // });
   }, []);
 
   return (
