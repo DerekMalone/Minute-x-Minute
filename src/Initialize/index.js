@@ -1,38 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import 'firebase/auth';
+import firebase from 'firebase/app';
+import { SignIn } from '../views';
+import { signOutUser } from '../api/auth';
 
 function Initialize() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+  const [user, setUser] = useState({});
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
-  };
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((authed) => {
+      if (authed) {
+        const userObj = {
+          uid: authed.uid,
+          fullName: authed.displayName,
+          user: authed.email.split('@')[0],
+        };
+        setUser(userObj);
+      } else if (user || user === null) {
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
-    <div className="App">
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          type="button"
-          id="this-button"
-          className="btn btn-info"
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          type="button"
-          id="that-button"
-          className="btn btn-primary mt-3"
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
-    </div>
+    <>
+      {user ? (
+        <div className="text-center mt-2">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={signOutUser}
+          >
+            Sign Out
+          </button>
+        </div>
+      ) : (
+        <SignIn user={user} />
+      )}
+      <h2>Landing Page</h2>
+    </>
   );
 }
 
