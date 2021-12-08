@@ -6,3 +6,4 @@ export { default as CoachesTeamComp } from './coachesComponents/CoachesTeamComp'
 export { default as PlayerDrillsComp } from './playersComponents/PlayerDrillsComp';
 export { default as PlayersPracticeComp } from './playersComponents/PlayersPracticeComp';
 export { default as PlayersTeamComp } from './playersComponents/PlayersTeamComp';
+export { default as Navbar } from './Navbar';

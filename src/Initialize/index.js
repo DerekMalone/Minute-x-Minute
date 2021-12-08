@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'firebase/auth';
 import firebase from 'firebase/app';
-import { SignIn } from '../views';
-import { signOutUser } from '../api/auth';
+import { Route } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import { CoachesTeamView, SignIn } from '../views';
 
 function Initialize() {
   const [user, setUser] = useState({});
@@ -18,7 +19,7 @@ function Initialize() {
           isCoach: true,
         };
         setUser(userObj);
-        console.warn(user); // need to try and resolve issue where user is not being set upon login?
+        console.warn(user?.isCoach);
       } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
         const userObj = {
           uid: authed.uid,
@@ -28,46 +29,44 @@ function Initialize() {
           isCoach: false,
         };
         setUser(userObj);
-        console.warn(userObj);
+        // console.warn(userObj);
       } else if (user || user === null) {
         setUser(null);
-        console.warn(user);
+        // console.warn(user);
       }
     });
-    //   if (authed) {
-    //     const userObj = {
-    //       uid: authed.uid,
-    //       fullName: authed.displayName,
-    //       user: authed.email.split('@')[0],
-    //       profileImage: authed.photoURL,
-    //       isCoach: process.env.REACT_APP_COACH_UID === authed.uid,
-    //     };
-    //     setUser(userObj);
-    //     console.warn(user); // need to try and resolve issue where user is not being set upon login?
-    //   } else if (user || user === null) {
-    //     setUser(null);
-    //   }
-    // });
   }, []);
 
   return (
     <>
       {user ? (
-        <div className="text-center mt-2">
-          <button
+        <>
+          <div className="text-center mt-2">
+            {/* <button
             type="button"
             className="btn btn-danger"
             onClick={signOutUser}
           >
             Sign Out
-          </button>
-        </div>
+          </button> */}
+          </div>
+        </>
       ) : (
         <SignIn user={user} />
       )}
-      <h2>Landing Page</h2>
+      <Navbar user={user} />
+      <Route user={user} />
+      <CoachesTeamView />
     </>
   );
 }
+
+/* <button
+type="button"
+className="btn btn-danger"
+onClick={signOutUser}
+>
+Sign Out
+</button> */
 
 export default Initialize;
