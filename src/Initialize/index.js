@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import 'firebase/auth';
 import firebase from 'firebase/app';
 import { Route } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import { CoachesTeamView, SignIn } from '../views';
+import MinxMinNavbar from '../components/Navbar';
+import { CoachesTeamView, SignIn, CoachesDrillsView } from '../views';
+import { CoachesTeamForm, CoachesDrillForm } from '../components';
+import CoachesPracticesView from '../views/coach/CoachesPracticesView';
 
 function Initialize() {
   const [user, setUser] = useState({});
@@ -19,7 +21,7 @@ function Initialize() {
           isCoach: true,
         };
         setUser(userObj);
-        console.warn(user?.isCoach);
+        // console.warn(user?.isCoach);
       } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
         const userObj = {
           uid: authed.uid,
@@ -54,9 +56,13 @@ function Initialize() {
       ) : (
         <SignIn user={user} />
       )}
-      <Navbar user={user} />
+      <MinxMinNavbar user={user} />
       <Route user={user} />
       <CoachesTeamView />
+      <CoachesPracticesView />
+      <CoachesDrillsView />
+      <CoachesTeamForm />
+      <CoachesDrillForm />
     </>
   );
 }
