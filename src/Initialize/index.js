@@ -3,8 +3,9 @@ import 'firebase/auth';
 import firebase from 'firebase/app';
 import { Route } from 'react-router-dom';
 import MinxMinNavbar from '../components/Navbar';
-import { SignIn } from '../views';
-import { CoachesTeamForm } from '../components';
+import { CoachesTeamView, SignIn, CoachesDrillsView } from '../views';
+import { CoachesTeamForm, CoachesDrillForm } from '../components';
+import CoachesPracticesView from '../views/coach/CoachesPracticesView';
 
 function Initialize() {
   const [user, setUser] = useState({});
@@ -57,8 +58,11 @@ function Initialize() {
       )}
       <MinxMinNavbar user={user} />
       <Route user={user} />
-      {/* <CoachesTeamView /> */}
+      <CoachesTeamView />
+      <CoachesPracticesView />
+      <CoachesDrillsView />
       <CoachesTeamForm />
+      <CoachesDrillForm />
     </>
   );
 }

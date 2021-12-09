@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Collapse,
-  //   Navbar,
+  Navbar,
   NavbarToggler,
-  //   NavbarBrand,
-  //   Nav,
-  //   NavItem,
-  //   NavLink,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
 } from 'reactstrap';
 import { signOutUser } from '../api/auth';
 
@@ -19,7 +19,7 @@ function MinxMinNavbar({ user }) {
 
   return (
     <div>
-      {/* <Navbar color="light" expand="md" light>
+      <Navbar color="light" expand="md" light>
         <NavbarBrand href="/">Minute x Minute</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -35,41 +35,51 @@ function MinxMinNavbar({ user }) {
                 <NavItem>
                   <NavLink href="/teamForm">Team Form</NavLink>
                 </NavItem>
-                <NavItem>
+                <li className="nav-item">
+                  <button
+                    type="button"
+                    className="btn btn-warning"
+                    onClick={signOutUser}
+                  >
+                    Logout
+                  </button>
+                </li>
+                {/* <NavItem>
                   <NavLink href="/projects">Projects</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="/projectsForm">Projects Form</NavLink>
-                </NavItem>
+                </NavItem> */}
               </>
             ) : (
-              <>
-                <NavItem>
-                  <NavLink href="//teamview">Teams</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/contact">Contact Info</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/tech">Tech Stacks</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/projects">Projects</NavLink>
-                </NavItem>
-              </>
+              'Nothing here'
+              // <>
+              //   <NavItem>
+              //     <NavLink href="//teamview">Teams</NavLink>
+              //   </NavItem>
+              //   <NavItem>
+              //     <NavLink href="/contact">Contact Info</NavLink>
+              //   </NavItem>
+              //   <NavItem>
+              //     <NavLink href="/tech">Tech Stacks</NavLink>
+              //   </NavItem>
+              //   <NavItem>
+              //     <NavLink href="/projects">Projects</NavLink>
+              //   </NavItem>
+              // </>
             )}
           </Nav>
         </Collapse>
-      </Navbar> */}
+      </Navbar>
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               Minute x Minute
             </Link>
-            {/* <button
+            <button
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -79,7 +89,7 @@ function MinxMinNavbar({ user }) {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon" />
-            </button> */}
+            </button>
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -129,7 +139,7 @@ function MinxMinNavbar({ user }) {
             </div>
           </div>
         </Collapse>
-      </nav>
+      </nav> */}
     </div>
   );
 }

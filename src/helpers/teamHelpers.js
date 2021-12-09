@@ -10,4 +10,16 @@ const getTeams = async () => {
   return teamArray;
 };
 
-export default getTeams;
+const createTeam = (teamItem) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/teams.json`, teamItem)
+    .then((obj) => {
+      const fbkey = { firebaseKey: obj.data.name };
+      axios.patch(`${dbUrl}/teams/${obj.data.name}.json`, fbkey).then(() => {
+        getTeams().then(resolve);
+      });
+    })
+    .catch(reject);
+});
+
+export { getTeams, createTeam };
