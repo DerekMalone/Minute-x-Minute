@@ -10,7 +10,6 @@ export default function CoachesTeamView() {
     let isMounted = true;
     getTeams().then((teamArray) => {
       if (isMounted) setTeams(teamArray);
-      console.warn(teams);
     });
     return () => {
       isMounted = false;

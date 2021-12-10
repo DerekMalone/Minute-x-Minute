@@ -4,7 +4,11 @@ import firebase from 'firebase/app';
 import { Route } from 'react-router-dom';
 import MinxMinNavbar from '../components/Navbar';
 import { CoachesTeamView, SignIn, CoachesDrillsView } from '../views';
-import { CoachesTeamForm, CoachesDrillForm } from '../components';
+import {
+  CoachesTeamForm,
+  CoachesDrillForm,
+  CoachesPracticeForm,
+} from '../components';
 import CoachesPracticesView from '../views/coach/CoachesPracticesView';
 
 function Initialize() {
@@ -21,7 +25,6 @@ function Initialize() {
           isCoach: true,
         };
         setUser(userObj);
-        // console.warn(user?.isCoach);
       } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
         const userObj = {
           uid: authed.uid,
@@ -31,10 +34,8 @@ function Initialize() {
           isCoach: false,
         };
         setUser(userObj);
-        // console.warn(userObj);
       } else if (user || user === null) {
         setUser(null);
-        // console.warn(user);
       }
     });
   }, []);
@@ -63,6 +64,7 @@ function Initialize() {
       <CoachesDrillsView />
       <CoachesTeamForm />
       <CoachesDrillForm />
+      <CoachesPracticeForm />
     </>
   );
 }
