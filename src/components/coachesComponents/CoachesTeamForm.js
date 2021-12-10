@@ -20,8 +20,6 @@ function CoachesTeamForm() {
       // edit promise goes here.
     } else {
       setFormInput(initialState);
-      console.warn(formInput);
-      console.warn('You are on the Coaches Team Form');
     }
   }, []);
 
@@ -51,9 +49,9 @@ function CoachesTeamForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <h3>Add/Edit Team Form</h3>
-      <formInput>
+      <form onSubmit={handleSubmit}>
         <div>
           <input
             type="text"
@@ -70,8 +68,8 @@ function CoachesTeamForm() {
             {fbKey ? 'Update' : 'Submit'}
           </button>
         </div>
-      </formInput>
-    </form>
+      </form>
+    </>
   );
 }
 

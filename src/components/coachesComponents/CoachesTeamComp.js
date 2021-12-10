@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Button, Card, CardTitle } from 'reactstrap';
 
 const CoachesTeamComp = ({ team }) => {
-  useEffect(() => {
-    console.warn('You are on the Coaches Team Component');
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
-      <h6>{team.teamName}</h6>
+      <Card body color="warning" outline>
+        <CardTitle tag="h5">{team.teamName}</CardTitle>
+        {/* <CardText>
+          With supporting text below as a natural lead-in to additional content.
+        </CardText> */}
+        <Button>Button</Button>
+      </Card>
       {/* <h2 className="name-style">{team.teamName}</h2>
           <h3 className="projects-style">{projects[7]}</h3>
 

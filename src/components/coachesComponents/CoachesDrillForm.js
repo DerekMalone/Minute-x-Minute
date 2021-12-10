@@ -25,8 +25,6 @@ function CoachesDrillForm() {
       // edit promise goes here.
     } else {
       setFormInput(initialState);
-      console.warn(coachUid);
-      console.warn('You are on the Coaches Drill Form');
     }
   }, []);
 
