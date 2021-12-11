@@ -22,7 +22,7 @@ export default function CoachesDrillsView() {
       {drills ? (
         <>
           <h1>Coaches Drill View Page</h1>
-          <CardGroup>
+          <CardGroup style={{ display: 'flex', flexDirection: 'row' }}>
             <div>
               {drills.map((drill) => (
                 <CoachesDrillsComp key={drill.name} drill={drill} />

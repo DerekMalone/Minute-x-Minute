@@ -1,5 +1,11 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 
-export default function CoachesPracticesView() {
-  return <div>Coaches Practice View Page</div>;
-}
+// export default function CoachesPracticesView() {
+//   const [practices, setPractices] = useState();
+
+//   useEffect(() => {
+//     getPractices().then()
+//   }, []);
+
+//   return <div>Coaches Practice View Page</div>;
+// }
