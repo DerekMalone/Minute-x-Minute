@@ -24,4 +24,11 @@ const createPractice = (practItem) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getPractices, createPractice };
+const deletePractice = (practKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/practices/${practKey}.json`)
+    .then(() => getPractices().then(resolve))
+    .catch(reject);
+});
+
+export { getPractices, createPractice, deletePractice };

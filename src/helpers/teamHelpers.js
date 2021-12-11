@@ -22,4 +22,11 @@ const createTeam = (teamItem) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getTeams, createTeam };
+const deleteTeam = (teamKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/teams/${teamKey}.json`)
+    .then(() => getTeams().then(resolve))
+    .catch(reject);
+});
+
+export { getTeams, createTeam, deleteTeam };
