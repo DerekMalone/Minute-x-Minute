@@ -21,8 +21,9 @@ export default function CoachesDrillsView() {
     <div>
       {drills ? (
         <>
+          {/* style={{ display: 'flex', flexDirection: 'row' }} */}
           <h1>Coaches Drill View Page</h1>
-          <CardGroup style={{ display: 'flex', flexDirection: 'row' }}>
+          <CardGroup>
             <div>
               {drills.map((drill) => (
                 <CoachesDrillsComp key={drill.name} drill={drill} />
