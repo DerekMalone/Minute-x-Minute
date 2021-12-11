@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getCurrentUsersUid, createPractice } from '../../helpers';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import {
+  getCurrentUsersUid,
+  createPractice,
+  getSinglePractice,
+} from '../../helpers';
 
 const initialState = {
   firebaseKey: '',
@@ -13,14 +17,26 @@ const initialState = {
 };
 
 function CoachesPracticeForm() {
+  // { practice }
   const [coachUid, setCoachUid] = useState(null);
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
   const history = useHistory();
 
   useEffect(() => {
+    console.warn(fbKey);
     if (fbKey) {
       // edit promise goes here.
+      getSinglePractice(fbKey).then((obj) => {
+        setFormInput({
+          firebaseKey: obj.firebaseKey,
+          duration: obj.duration,
+          dateTime: obj.dateTime,
+          name: obj.name,
+          coachID: obj.coachID,
+          teamID: obj.teamID,
+        });
+      });
     } else {
       setFormInput(initialState);
     }
@@ -103,6 +119,17 @@ function CoachesPracticeForm() {
   );
 }
 
-CoachesPracticeForm.propTypes = {};
+CoachesPracticeForm.propTypes = {
+  practice: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    duration: PropTypes.number,
+    dateTime: PropTypes.number,
+    name: PropTypes.string,
+    coachID: PropTypes.string,
+    teamID: PropTypes.string,
+  }),
+};
+
+CoachesPracticeForm.defaultProps = { practice: {} };
 
 export default CoachesPracticeForm;

@@ -34,6 +34,13 @@ const deleteDrill = (drillKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSigleDrill = (drillKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/drills/${drillKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 export {
-  getDrills, getSingleDrill, createDrill, deleteDrill,
+  getDrills, getSingleDrill, createDrill, deleteDrill, getSigleDrill,
 };

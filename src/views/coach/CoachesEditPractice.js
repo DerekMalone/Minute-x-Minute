@@ -1,0 +1,27 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+// import { CoachesPracticeForm } from '../../components';
+import { getSinglePractice } from '../../helpers';
+
+const CoachesEditPractice = () => {
+  const { fbKey } = useParams();
+  const [editPractice, setEditPractice] = useState({});
+
+  useEffect(() => {
+    console.warn('debug', fbKey);
+    getSinglePractice(fbKey).then(setEditPractice);
+  }, []);
+
+  return (
+    <>
+      <div>
+        <div className="formContainer">
+          <h2>Hello {editPractice}</h2>
+          {/* <CoachesPracticeForm practice={editPractice} /> */}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default CoachesEditPractice;

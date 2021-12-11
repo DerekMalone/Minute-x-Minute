@@ -2,8 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import CoachesRoutes from './CoachesRoutes';
-import { CoachesDrillsView, CoachesTeamView, CoachesEditTeam } from '../views';
-import CoachesPracticesView from '../views/coach/CoachesPracticesView';
+import {
+  CoachesPracticesView,
+  CoachesDrillsView,
+  CoachesTeamView,
+  CoachesEditTeam,
+  CoachesEditPractice,
+} from '../views';
 import {
   CoachesDrillForm,
   CoachesPracticeForm,
@@ -47,9 +52,10 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path="/editteam/:firebaseKey"
-          component={() => <CoachesEditTeam />}
+          path="/editpractice/:fbKey"
+          component={CoachesEditPractice}
         />
+        <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />
       </Switch>
       {/* {user?.isCoach && <CoachesRoutes user={user} />} */}
       {/* <PlayersRoutes user={user} /> */}

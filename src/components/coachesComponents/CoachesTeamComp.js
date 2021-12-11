@@ -8,7 +8,6 @@ const CoachesTeamComp = ({ team }) => {
   const history = useHistory();
 
   const handleDelete = () => {
-    console.warn('delete clicked on', team.teamName);
     deleteTeam(team.firebaseKey).then(() => history.go(0));
   };
 

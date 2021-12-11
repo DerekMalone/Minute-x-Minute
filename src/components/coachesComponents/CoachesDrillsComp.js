@@ -7,13 +7,17 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { deleteDrill } from '../../helpers';
 
 const CoachesDrillsComp = ({ drill }) => {
+  const history = useHistory();
   useEffect(() => {}, []);
 
   const handleDelete = () => {
     console.warn('Deleted', drill.name);
+    deleteDrill(drill.firebaseKey).then(() => history.go(0));
   };
 
   return (

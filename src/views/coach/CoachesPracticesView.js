@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import { CoachesPracticeComp } from '../../components';
 import { getPractices } from '../../helpers';
@@ -18,9 +19,14 @@ export default function CoachesPracticesView() {
 
   return (
     <div>
+      <div>
+        <h1>Practice View</h1>
+        <Link to="/practiceform" type="button" className="btn btn-success">
+          New Practice
+        </Link>
+      </div>
       {practices ? (
         <>
-          <h1>Practice View</h1>
           <Table striped>
             {practices.map((practice) => (
               <CoachesPracticeComp key={practice.name} practice={practice} />

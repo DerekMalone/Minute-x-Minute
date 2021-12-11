@@ -10,12 +10,12 @@ const getTeams = async () => {
   return teamArray;
 };
 
-const getSigleTeam = async (teamKey) => {
-  const team = axios
-    .get(`${dbUrl}/teams/${teamKey}`)
-    .then((response) => response.data);
-  return team;
-};
+const getSigleTeam = (teamKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/teams/${teamKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
 
 const createTeam = (teamItem) => new Promise((resolve, reject) => {
   axios

@@ -4,12 +4,11 @@ import { CoachesTeamForm } from '../../components';
 import { getSigleTeam } from '../../helpers';
 
 const CoachesEditTeam = () => {
+  const { fbKey } = useParams();
   const [editTeam, setEditTeam] = useState({});
-  const [firebaseKey] = useParams;
 
   useEffect(() => {
-    console.warn(firebaseKey);
-    getSigleTeam(firebaseKey).then(setEditTeam);
+    getSigleTeam(fbKey).then(setEditTeam);
   }, []);
 
   return (

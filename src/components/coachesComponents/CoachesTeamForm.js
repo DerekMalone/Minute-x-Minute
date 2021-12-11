@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
@@ -9,13 +9,13 @@ const initialState = {
   teamName: '',
 };
 
-function CoachesTeamForm({ team }) {
+function CoachesTeamForm() {
+  // { team }
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
   const history = useHistory();
 
   useEffect(() => {
-    console.warn(fbKey);
     if (fbKey) {
       getSigleTeam(fbKey).then((obj) => {
         setFormInput({
@@ -23,7 +23,6 @@ function CoachesTeamForm({ team }) {
           teamName: obj.teamName,
         });
       });
-      console.warn(team);
     } else {
       setFormInput(initialState);
     }
@@ -79,13 +78,13 @@ function CoachesTeamForm({ team }) {
   );
 }
 
-CoachesTeamForm.propTypes = {
-  team: PropTypes.shape({
-    firebaseKey: PropTypes.string,
-    teamName: PropTypes.string,
-  }),
-};
+// CoachesTeamForm.propTypes = {
+//   team: PropTypes.shape({
+//     firebaseKey: PropTypes.string,
+//     teamName: PropTypes.string,
+//   }),
+// };
 
-CoachesTeamForm.defaultProps = { team: {} };
+// CoachesTeamForm.defaultProps = { team: {} };
 
 export default CoachesTeamForm;
