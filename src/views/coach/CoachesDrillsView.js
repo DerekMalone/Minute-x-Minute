@@ -23,9 +23,11 @@ export default function CoachesDrillsView() {
         <>
           <h1>Coaches Drill View Page</h1>
           <CardGroup>
-            {drills.map((drill) => (
-              <CoachesDrillsComp key={drill.name} drill={drill} />
-            ))}
+            <div>
+              {drills.map((drill) => (
+                <CoachesDrillsComp key={drill.name} drill={drill} />
+              ))}
+            </div>
           </CardGroup>
           <Link to="/drillForm" type="button" className="btn btn-success">
             Create a New Drill
