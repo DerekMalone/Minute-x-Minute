@@ -1,23 +1,29 @@
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { createTeam } from '../../helpers/index';
-
-// import PropTypes from 'prop-types'
+import { createTeam, getSigleTeam } from '../../helpers/index';
 
 const initialState = {
   firebaseKey: '',
   teamName: '',
 };
 
-function CoachesTeamForm() {
+function CoachesTeamForm({ team }) {
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
   const history = useHistory();
 
   useEffect(() => {
+    console.warn(fbKey);
     if (fbKey) {
-      // edit promise goes here.
+      getSigleTeam(fbKey).then((obj) => {
+        setFormInput({
+          firebaseKey: obj.firebaseKey,
+          teamName: obj.teamName,
+        });
+      });
+      console.warn(team);
     } else {
       setFormInput(initialState);
     }
@@ -73,6 +79,13 @@ function CoachesTeamForm() {
   );
 }
 
-CoachesTeamForm.propTypes = {};
+CoachesTeamForm.propTypes = {
+  team: PropTypes.shape({
+    firebaseKey: PropTypes.string,
+    teamName: PropTypes.string,
+  }),
+};
+
+CoachesTeamForm.defaultProps = { team: {} };
 
 export default CoachesTeamForm;

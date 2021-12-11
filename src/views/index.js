@@ -6,3 +6,4 @@ export { default as CoachesTeamView } from './coach/CoachesTeamView';
 export { default as PlayerDrillsView } from './player/PlayerDrillsView';
 export { default as PlayerPracticeView } from './player/PlayerPracticeView';
 export { default as PlayerTeamView } from './player/PlayerTeamView';
+export { default as CoachesEditTeam } from './coach/CoachesEditTeam';
