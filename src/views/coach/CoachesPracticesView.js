@@ -22,11 +22,9 @@ export default function CoachesPracticesView() {
         <>
           <h1>Practice View</h1>
           <Table striped>
-            <div>
-              {practices.map((practice) => (
-                <CoachesPracticeComp key={practice.name} practice={practice} />
-              ))}
-            </div>
+            {practices.map((practice) => (
+              <CoachesPracticeComp key={practice.name} practice={practice} />
+            ))}
           </Table>
         </>
       ) : (

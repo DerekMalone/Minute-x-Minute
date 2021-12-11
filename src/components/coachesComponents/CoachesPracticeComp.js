@@ -5,7 +5,7 @@ const CoachesPracticeComp = ({ practice }) => {
   useEffect(() => {}, []);
 
   return (
-    <div>
+    <>
       <thead>
         <tr>
           <th>#</th>
@@ -34,7 +34,7 @@ const CoachesPracticeComp = ({ practice }) => {
           <td>@twitter</td>
         </tr>
       </tbody>
-    </div>
+    </>
   );
 };
 
