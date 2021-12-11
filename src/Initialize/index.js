@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import 'firebase/auth';
 import firebase from 'firebase/app';
-import { Route } from 'react-router-dom';
 import MinxMinNavbar from '../components/Navbar';
-import { CoachesTeamView, SignIn, CoachesDrillsView } from '../views';
-import {
-  CoachesTeamForm,
-  CoachesDrillForm,
-  CoachesPracticeForm,
-} from '../components';
-import CoachesPracticesView from '../views/coach/CoachesPracticesView';
+import Route from '../routes/index';
+import { SignIn } from '../views';
+//  CoachesTeamView,  , CoachesDrillsView from above line
+// import {
+//   CoachesTeamForm,
+//   CoachesDrillForm,
+//   CoachesPracticeForm,
+// } from '../components';
+// import CoachesPracticesView from '../views/coach/CoachesPracticesView';
 
 function Initialize() {
   const [user, setUser] = useState({});
@@ -25,14 +26,14 @@ function Initialize() {
           isCoach: true,
         };
         setUser(userObj);
-      } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
-        const userObj = {
-          uid: authed.uid,
-          fullName: authed.displayName,
-          user: authed.email.split('@')[0],
-          profileImage: authed.photoURL,
-          isCoach: false,
-        };
+        // } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
+        //   const userObj = {
+        //     uid: authed.uid,
+        //     fullName: authed.displayName,
+        //     user: authed.email.split('@')[0],
+        //     profileImage: authed.photoURL,
+        //     isCoach: false,
+        //   };
         setUser(userObj);
       } else if (user || user === null) {
         setUser(null);
@@ -59,12 +60,12 @@ function Initialize() {
       )}
       <MinxMinNavbar user={user} />
       <Route user={user} />
-      <CoachesTeamView />
+      {/* <CoachesTeamView />
       <CoachesPracticesView />
       <CoachesDrillsView />
       <CoachesTeamForm />
       <CoachesDrillForm />
-      <CoachesPracticeForm />
+      <CoachesPracticeForm /> */}
     </>
   );
 }

@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
+import { deletePractice } from '../../helpers';
 
 const CoachesPracticeComp = ({ practice }) => {
+  const handleDelete = () => {
+    console.warn('deleted', practice.firebaseKey);
+    deletePractice(practice.firebaseKey).then();
+  };
+
   useEffect(() => {}, []);
 
   return (
@@ -34,6 +41,13 @@ const CoachesPracticeComp = ({ practice }) => {
           <td>@twitter</td>
         </tr>
       </tbody>
+      <Button
+        type="button"
+        className="btn btn-outline-danger"
+        onClick={handleDelete}
+      >
+        Delete
+      </Button>
     </>
   );
 };

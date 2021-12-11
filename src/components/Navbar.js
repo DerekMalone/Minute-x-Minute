@@ -27,13 +27,22 @@ function MinxMinNavbar({ user }) {
             {user ? (
               <>
                 <NavItem>
-                  <NavLink href="/">About Me</NavLink>
+                  <NavLink href="/">My Team</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/teamview">My Team</NavLink>
+                  <NavLink href="/practiceview">Practices</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/drillview">Drills</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="/teamForm">Team Form</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/practiceForm">Practice Form</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/drillForm">Drill Form</NavLink>
                 </NavItem>
                 <li className="nav-item">
                   <button
@@ -44,12 +53,6 @@ function MinxMinNavbar({ user }) {
                     Logout
                   </button>
                 </li>
-                {/* <NavItem>
-                  <NavLink href="/projects">Projects</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/projectsForm">Projects Form</NavLink>
-                </NavItem> */}
               </>
             ) : (
               'Nothing here'

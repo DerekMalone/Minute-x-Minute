@@ -12,6 +12,10 @@ import PropTypes from 'prop-types';
 const CoachesDrillsComp = ({ drill }) => {
   useEffect(() => {}, []);
 
+  const handleDelete = () => {
+    console.warn('Deleted', drill.name);
+  };
+
   return (
     <div>
       {/* style={{ flex: 1 }}  */}
@@ -22,7 +26,13 @@ const CoachesDrillsComp = ({ drill }) => {
             {drill.conditioning}
           </CardSubtitle>
           <CardText>{drill.details}</CardText>
-          <Button>Button</Button>
+          <Button
+            type="button"
+            className="btn btn-outline-danger"
+            onClick={handleDelete}
+          >
+            Delete
+          </Button>
         </CardBody>
       </Card>
     </div>
