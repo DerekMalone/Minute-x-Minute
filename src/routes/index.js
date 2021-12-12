@@ -51,13 +51,13 @@ export default function Routes({ user }) {
           path="/drillForm"
           component={() => <CoachesDrillForm user={user} />}
         />
+        <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />
         <Route
           exact
           path="/editpractice/:fbKey"
           component={CoachesEditPractice}
         />
         <Route exact path="/editdrill/:fbKey" component={CoachesEditDrill} />
-        <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />
       </Switch>
       {/* {user?.isCoach && <CoachesRoutes user={user} />} */}
       {/* <PlayersRoutes user={user} /> */}
