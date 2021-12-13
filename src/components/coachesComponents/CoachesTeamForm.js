@@ -19,8 +19,8 @@ function CoachesTeamForm() {
     if (fbKey) {
       getSigleTeam(fbKey).then((obj) => {
         setFormInput({
-          firebaseKey: obj.firebaseKey,
-          teamName: obj.teamName,
+          firebaseKey: obj?.firebaseKey,
+          teamName: obj?.teamName,
         });
       });
     } else {

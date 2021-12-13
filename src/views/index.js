@@ -7,5 +7,5 @@ export { default as PlayerDrillsView } from './player/PlayerDrillsView';
 export { default as PlayerPracticeView } from './player/PlayerPracticeView';
 export { default as PlayerTeamView } from './player/PlayerTeamView';
 export { default as CoachesEditTeam } from './coach/CoachesEditTeam';
-export { default as CoachesEditPractice } from './coach/CoachesEditTeam';
-export { default as CoachesEditDrill } from './coach/CoachesEditTeam';
+export { default as CoachesEditPractice } from './coach/CoachesEditPractice';
+export { default as CoachesEditDrill } from './coach/CoachesEditDrill';

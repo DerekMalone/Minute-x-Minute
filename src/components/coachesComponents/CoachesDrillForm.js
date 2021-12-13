@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { createDrill, getCurrentUsersUid } from '../../helpers';
+import { createDrill, getCurrentUsersUid, getSingleDrill } from '../../helpers';
 // import PropTypes from 'prop-types'
 
 const initialState = {
@@ -22,7 +22,18 @@ function CoachesDrillForm() {
 
   useEffect(() => {
     if (fbKey) {
-      // edit promise goes here.
+      getSingleDrill(fbKey).then((obj) => {
+        setFormInput({
+          firebaseKey: obj?.firebaseKey,
+          private: obj?.private,
+          name: obj?.name,
+          conditioning: obj?.conditioning,
+          duration: obj?.duration,
+          details: obj?.details,
+          coachID: obj?.coachID,
+          teamID: obj?.teamID,
+        });
+      });
     } else {
       setFormInput(initialState);
     }
@@ -50,7 +61,6 @@ function CoachesDrillForm() {
       resetForm();
       history.push('/');
     } else {
-      // create team promise goes here.
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
         history.push('/');

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import { CoachesPracticeForm } from '../../components';
+import { CoachesPracticeForm } from '../../components';
 import { getSinglePractice } from '../../helpers';
 
 const CoachesEditPractice = () => {
@@ -8,7 +8,6 @@ const CoachesEditPractice = () => {
   const [editPractice, setEditPractice] = useState({});
 
   useEffect(() => {
-    console.warn('debug', fbKey);
     getSinglePractice(fbKey).then(setEditPractice);
   }, []);
 
@@ -17,7 +16,7 @@ const CoachesEditPractice = () => {
       <div>
         <div className="formContainer">
           <h2>Hello {editPractice}</h2>
-          {/* <CoachesPracticeForm practice={editPractice} /> */}
+          <CoachesPracticeForm practice={editPractice} />
         </div>
       </div>
     </>

@@ -15,7 +15,7 @@ const CoachesEditDrill = () => {
     <>
       <div>
         <div className="formContainer">
-          <CoachesDrillForm practice={editDrill} />
+          <CoachesDrillForm drill={editDrill} />
         </div>
       </div>
     </>

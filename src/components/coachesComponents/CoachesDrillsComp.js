@@ -15,7 +15,6 @@ const CoachesDrillsComp = ({ drill }) => {
   const history = useHistory();
 
   const handleDelete = () => {
-    console.warn('Deleted', drill.name);
     deleteDrill(drill.firebaseKey).then(() => history.go(0));
   };
 

@@ -9,11 +9,12 @@ const getDrills = async () => {
   return drillData;
 };
 
-const getSingleDrill = async (fbKey) => {
-  const drill = await axios.get(`${dbUrl}/drills/${fbKey}.json`);
-  const drillData = drill.data;
-  return drillData;
-};
+const getSingleDrill = (fbKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/drills/${fbKey}.json`)
+    .then((response) => resolve(response.date))
+    .catch(reject);
+});
 
 const createDrill = (drillItem) => new Promise((resolve, reject) => {
   axios
