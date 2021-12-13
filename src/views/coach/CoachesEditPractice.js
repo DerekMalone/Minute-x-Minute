@@ -15,7 +15,6 @@ const CoachesEditPractice = () => {
     <>
       <div>
         <div className="formContainer">
-          <h2>Hello {editPractice}</h2>
           <CoachesPracticeForm practice={editPractice} />
         </div>
       </div>

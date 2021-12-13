@@ -12,7 +12,7 @@ const getDrills = async () => {
 const getSingleDrill = (fbKey) => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/drills/${fbKey}.json`)
-    .then((response) => resolve(response.date))
+    .then((response) => resolve(response.data))
     .catch(reject);
 });
 
@@ -35,13 +35,13 @@ const deleteDrill = (drillKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSigleDrill = (drillKey) => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/drills/${drillKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch(reject);
-});
+// const getSingleDrill = (drillKey) => new Promise((resolve, reject) => {
+//   axios
+//     .get(`${dbUrl}/drills/${drillKey}.json`)
+//     .then((response) => resolve(response.data))
+//     .catch(reject);
+// });
 
 export {
-  getDrills, getSingleDrill, createDrill, deleteDrill, getSigleDrill,
+  getDrills, getSingleDrill, createDrill, deleteDrill,
 };

@@ -7,7 +7,6 @@ export {
   getSingleDrill,
   createDrill,
   deleteDrill,
-  getSigleDrill,
 } from './drillHelpers';
 export {
   getPractices,

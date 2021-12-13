@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CoachesDrillForm } from '../../components';
-import { getSigleDrill } from '../../helpers';
+import { getSingleDrill } from '../../helpers';
 
 const CoachesEditDrill = () => {
   const { fbKey } = useParams();
   const [editDrill, setEditDrill] = useState({});
 
   useEffect(() => {
-    getSigleDrill(fbKey).then(setEditDrill);
+    getSingleDrill(fbKey).then(setEditDrill);
   }, []);
 
   return (

@@ -29,12 +29,12 @@ function CoachesPracticeForm() {
       // edit promise goes here.
       getSinglePractice(fbKey).then((obj) => {
         setFormInput({
-          firebaseKey: obj.firebaseKey,
-          duration: obj.duration,
-          dateTime: obj.dateTime,
-          name: obj.name,
-          coachID: obj.coachID,
-          teamID: obj.teamID,
+          firebaseKey: obj?.firebaseKey,
+          duration: Number(obj?.duration),
+          dateTime: obj?.dateTime,
+          name: obj?.name,
+          coachID: obj?.coachID,
+          teamID: obj?.teamID,
         });
       });
     } else {
