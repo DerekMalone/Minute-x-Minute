@@ -1,5 +1,7 @@
 export { default as getCurrentUsersUid } from './userHelpers';
-export { getTeams, createTeam, deleteTeam } from './teamHelpers';
+export {
+  getTeams, createTeam, deleteTeam, getSigleTeam,
+} from './teamHelpers';
 export {
   getDrills,
   getSingleDrill,
@@ -10,4 +12,5 @@ export {
   getPractices,
   createPractice,
   deletePractice,
+  getSinglePractice,
 } from './practiceHelpers';

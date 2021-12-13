@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card, CardTitle } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
 import { deleteTeam } from '../../helpers';
 
 const CoachesTeamComp = ({ team }) => {
-  useEffect(() => {}, []);
+  const history = useHistory();
 
   const handleDelete = () => {
-    console.warn('delete clicked on', team.teamName);
-    deleteTeam(team.firebaseKey).then();
+    deleteTeam(team.firebaseKey).then(() => history.go(0));
   };
 
   return (
@@ -18,6 +18,13 @@ const CoachesTeamComp = ({ team }) => {
         {/* <CardText>
           With supporting text below as a natural lead-in to additional content.
         </CardText> */}
+        <Link
+          to={`/editteam/${team.firebaseKey}`}
+          type="button"
+          className="btn btn-info"
+        >
+          Edit Team
+        </Link>
         <Button
           type="button"
           className="btn btn-outline-danger"

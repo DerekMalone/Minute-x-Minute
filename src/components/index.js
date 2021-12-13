@@ -1,4 +1,4 @@
-export { default as CoachesDrillsForm } from './coachesComponents/CoachesDrillForm';
+export { default as CoachesDrillForm } from './coachesComponents/CoachesDrillForm';
 export { default as CoachesDrillsComp } from './coachesComponents/CoachesDrillsComp';
 export { default as CoachesPracticeForm } from './coachesComponents/CoachesPractForm';
 export { default as CoachesPracticeComp } from './coachesComponents/CoachesPracticeComp';
@@ -7,5 +7,4 @@ export { default as PlayerDrillsComp } from './playersComponents/PlayerDrillsCom
 export { default as PlayersPracticeComp } from './playersComponents/PlayersPracticeComp';
 export { default as PlayersTeamComp } from './playersComponents/PlayersTeamComp';
 export { default as CoachesTeamForm } from './coachesComponents/CoachesTeamForm';
-export { default as CoachesDrillForm } from './coachesComponents/CoachesDrillForm';
 export { default as MinxMinNavbar } from './Navbar';

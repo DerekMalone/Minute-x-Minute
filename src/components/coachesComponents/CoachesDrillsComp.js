@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Button,
   Card,
@@ -7,13 +7,15 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { deleteDrill } from '../../helpers';
 
 const CoachesDrillsComp = ({ drill }) => {
-  useEffect(() => {}, []);
+  const history = useHistory();
 
   const handleDelete = () => {
-    console.warn('Deleted', drill.name);
+    deleteDrill(drill.firebaseKey).then(() => history.go(0));
   };
 
   return (
@@ -26,6 +28,13 @@ const CoachesDrillsComp = ({ drill }) => {
             {drill.conditioning}
           </CardSubtitle>
           <CardText>{drill.details}</CardText>
+          <Link
+            to={`/editdrill/${drill.firebaseKey}`}
+            type="button"
+            className="btn btn-info"
+          >
+            Edit Drill
+          </Link>
           <Button
             type="button"
             className="btn btn-outline-danger"

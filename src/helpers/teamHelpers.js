@@ -10,6 +10,13 @@ const getTeams = async () => {
   return teamArray;
 };
 
+const getSigleTeam = (teamKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/teams/${teamKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 const createTeam = (teamItem) => new Promise((resolve, reject) => {
   axios
     .post(`${dbUrl}/teams.json`, teamItem)
@@ -29,4 +36,6 @@ const deleteTeam = (teamKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getTeams, createTeam, deleteTeam };
+export {
+  getTeams, createTeam, deleteTeam, getSigleTeam,
+};
