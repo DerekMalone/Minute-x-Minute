@@ -35,13 +35,13 @@ const deleteDrill = (drillKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const getSingleDrill = (drillKey) => new Promise((resolve, reject) => {
-//   axios
-//     .get(`${dbUrl}/drills/${drillKey}.json`)
-//     .then((response) => resolve(response.data))
-//     .catch(reject);
-// });
+const updateDrill = (drillObj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/drills/${drillObj.firebaseKey}.json`, drillObj)
+    .then(() => getSingleDrill().then(resolve))
+    .catch(reject);
+});
 
 export {
-  getDrills, getSingleDrill, createDrill, deleteDrill,
+  getDrills, getSingleDrill, createDrill, deleteDrill, updateDrill,
 };

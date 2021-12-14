@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { createTeam, getSigleTeam } from '../../helpers/index';
+import { updateTeam } from '../../helpers/teamHelpers';
 
 const initialState = {
   firebaseKey: '',
@@ -43,8 +44,10 @@ function CoachesTeamForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fbKey) {
-      resetForm();
-      history.push('/');
+      updateTeam(formInput).then(() => {
+        resetForm();
+        history.push('/');
+      });
     } else {
       createTeam({ ...formInput }).then(() => {
         resetForm();

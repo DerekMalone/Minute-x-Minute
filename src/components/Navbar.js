@@ -30,19 +30,10 @@ function MinxMinNavbar({ user }) {
                   <NavLink href="/">My Team</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/practiceview">Practices</NavLink>
+                  <NavLink href="/practiceview/:practice">Practices</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/drillview">Drills</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/teamForm">Team Form</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/practiceForm">Practice Form</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="/drillForm">Drill Form</NavLink>
+                  <NavLink href="/drillview/:drill">Drills</NavLink>
                 </NavItem>
                 <li className="nav-item">
                   <button

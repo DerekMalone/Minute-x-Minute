@@ -28,12 +28,12 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path="/practiceview"
+          path="/practiceview/:page"
           component={() => <CoachesPracticesView user={user} />}
         />
         <Route
           exact
-          path="/drillview"
+          path="/drillview/:page"
           component={() => <CoachesDrillsView user={user} />}
         />
         <Route
