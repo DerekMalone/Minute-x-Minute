@@ -38,6 +38,17 @@ const getSinglePractice = (practKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const updatePractice = (practObj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/practices/${practObj.firebaseKey}.json`, practObj)
+    .then(() => getSinglePractice().then(resolve))
+    .catch(reject);
+});
+
 export {
-  getPractices, createPractice, deletePractice, getSinglePractice,
+  getPractices,
+  createPractice,
+  deletePractice,
+  getSinglePractice,
+  updatePractice,
 };
