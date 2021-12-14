@@ -6,6 +6,7 @@ import {
   createPractice,
   getSinglePractice,
 } from '../../helpers';
+import { updatePractice } from '../../helpers/practiceHelpers';
 
 const initialState = {
   firebaseKey: '',
@@ -61,13 +62,15 @@ function CoachesPracticeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fbKey) {
-      resetForm();
-      history.push('/');
+      updatePractice(formInput).then(() => {
+        resetForm();
+        history.push('/practiceview/:page');
+      });
     } else {
       // create practice promise goes here.
       createPractice({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/');
+        history.push('/practiceview/:page');
       });
     }
   };

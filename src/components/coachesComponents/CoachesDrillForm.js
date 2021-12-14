@@ -65,12 +65,12 @@ function CoachesDrillForm() {
     if (fbKey) {
       updateDrill(formInput).then(() => {
         resetForm();
-        history.push('/');
+        history.push('/drillview/:page');
       });
     } else {
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/');
+        history.push('/drillview/:page');
       });
     }
   };
