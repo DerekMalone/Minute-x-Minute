@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { createDrill, getCurrentUsersUid, getSingleDrill } from '../../helpers';
+import {
+  createDrill,
+  getCurrentUsersUid,
+  getSingleDrill,
+  updateDrill,
+} from '../../helpers';
 // import PropTypes from 'prop-types'
 
 const initialState = {
@@ -58,8 +63,10 @@ function CoachesDrillForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fbKey) {
-      resetForm();
-      history.push('/');
+      updateDrill(formInput).then(() => {
+        resetForm();
+        history.push('/');
+      });
     } else {
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
