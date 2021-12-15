@@ -25,7 +25,6 @@ function CoachesPracticeForm() {
   const history = useHistory();
 
   useEffect(() => {
-    console.warn(fbKey);
     if (fbKey) {
       // edit promise goes here.
       getSinglePractice(fbKey).then((obj) => {

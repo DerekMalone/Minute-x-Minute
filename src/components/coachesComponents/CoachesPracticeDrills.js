@@ -8,6 +8,7 @@ export default function CoachesPracticeDrills({ drill }) {
         {/* <th scope="row">1</th> */}
         <td>{drill.name}</td>
         <td>{drill.conditioning}</td>
+        <td>{drill.duration}</td>
         <td>{drill.details}</td>
       </tr>
     </>

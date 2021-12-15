@@ -42,6 +42,18 @@ const updateDrill = (drillObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPractDrills = (practFbKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/drills/.json?orderBy="practiceID"&equalTo="${practFbKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
+
 export {
-  getDrills, getSingleDrill, createDrill, deleteDrill, updateDrill,
+  getDrills,
+  getSingleDrill,
+  createDrill,
+  deleteDrill,
+  updateDrill,
+  getPractDrills,
 };

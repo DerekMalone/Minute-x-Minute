@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { deletePractice, getDrills } from '../../helpers';
+import { deletePractice, getPractDrills } from '../../helpers';
 import { CoachesPracticeDrills } from '../index';
+// import {  getDrills } from '../../helpers/drillHelpers';
 
 const CoachesPracticeComp = ({ practice }) => {
   const [practDrills, setPractDrills] = useState([]);
@@ -11,9 +12,12 @@ const CoachesPracticeComp = ({ practice }) => {
 
   useEffect(() => {
     let isMounted = true;
-    getDrills().then((drills) => {
+    getPractDrills(practice.firebaseKey).then((drills) => {
       if (isMounted) setPractDrills(drills);
     });
+    // getDrills().then((drills) => {
+    //   if (isMounted) setPractDrills(drills);
+    // });
     return () => {
       isMounted = false;
     };
@@ -29,6 +33,7 @@ const CoachesPracticeComp = ({ practice }) => {
         <tr>
           <th>{practice.name}</th>
           <th>Conditioning</th>
+          <th>Drill Length</th>
           <th>{practice.dateTime}</th>
         </tr>
       </thead>

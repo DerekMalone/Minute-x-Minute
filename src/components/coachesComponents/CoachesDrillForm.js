@@ -118,6 +118,19 @@ function CoachesDrillForm() {
           />
         </div>
         <div>
+          <input
+            type="number"
+            className="form-control"
+            name="duration"
+            value={formInput.duration || ''}
+            onChange={handleChange}
+            placeholder="Duration of Drill in minutes."
+            min="1"
+            max="240"
+            required
+          />
+        </div>
+        <div>
           <textarea
             type="text"
             className="form-control"
