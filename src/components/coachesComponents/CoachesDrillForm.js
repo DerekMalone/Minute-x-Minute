@@ -17,6 +17,7 @@ const initialState = {
   details: '',
   coachID: '',
   teamID: '',
+  practiceID: '',
 };
 
 function CoachesDrillForm() {
@@ -37,6 +38,7 @@ function CoachesDrillForm() {
           details: obj?.details,
           coachID: obj?.coachID,
           teamID: obj?.teamID,
+          practiceID: obj?.practiceID,
         });
       });
     } else {

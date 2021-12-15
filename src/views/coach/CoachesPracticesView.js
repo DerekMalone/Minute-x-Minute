@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import Search from '../Search';
-import { CoachesPracticeComp } from '../../components';
+import CoachesPracticeComp from '../../components/coachesComponents/CoachesPracticeComp';
 import { getPractices } from '../../helpers';
 
 export default function CoachesPracticesView() {
