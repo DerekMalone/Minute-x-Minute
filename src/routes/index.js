@@ -53,7 +53,7 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path="/drillForm"
+          path="/drillForm/:practFBKey"
           component={() => <CoachesDrillForm user={user} />}
         />
         <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />

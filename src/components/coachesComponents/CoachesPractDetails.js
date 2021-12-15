@@ -27,7 +27,11 @@ const CoachesPractDetails = () => {
     <div>
       <h3>Your Practice will go here</h3>
       <h5>{practDetail.name}</h5>
-      <Link to="/drillForm" type="button" className="btn btn-success">
+      <Link
+        to={`/drillForm/${practDetail.firebaseKey}`}
+        type="button"
+        className="btn btn-success"
+      >
         Add New Drill
       </Link>
     </div>

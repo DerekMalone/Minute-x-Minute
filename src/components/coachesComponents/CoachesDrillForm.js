@@ -23,6 +23,7 @@ const initialState = {
 function CoachesDrillForm() {
   const [coachUid, setCoachUid] = useState(null);
   const [formInput, setFormInput] = useState({});
+  const { practFBKey } = useParams();
   const { fbKey } = useParams();
   const history = useHistory();
 
@@ -41,6 +42,8 @@ function CoachesDrillForm() {
           practiceID: obj?.practiceID,
         });
       });
+    } else if (practFBKey) {
+      setFormInput({ ...initialState, practiceID: practFBKey });
     } else {
       setFormInput(initialState);
     }
@@ -72,7 +75,7 @@ function CoachesDrillForm() {
     } else {
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/drillview/:page');
+        history.push('/practiceview/:page');
       });
     }
   };
