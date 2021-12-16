@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import CoachesRoutes from './CoachesRoutes';
 import {
   CoachesPracticesView,
   CoachesDrillsView,
@@ -12,6 +11,7 @@ import {
 } from '../views';
 import {
   CoachesDrillForm,
+  CoachesPractDetails,
   CoachesPracticeForm,
   CoachesTeamForm,
 } from '../components';
@@ -33,6 +33,11 @@ export default function Routes({ user }) {
         />
         <Route
           exact
+          path="/practicedetials/:fbKey"
+          component={() => <CoachesPractDetails user={user} />}
+        />
+        <Route
+          exact
           path="/drillview/:page"
           component={() => <CoachesDrillsView user={user} />}
         />
@@ -48,7 +53,7 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path="/drillForm"
+          path="/drillForm/:practFBKey"
           component={() => <CoachesDrillForm user={user} />}
         />
         <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />

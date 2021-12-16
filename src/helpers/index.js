@@ -12,6 +12,7 @@ export {
   createDrill,
   deleteDrill,
   updateDrill,
+  getPractDrills,
 } from './drillHelpers';
 export {
   getPractices,

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';
+import { FormControlLabel } from '@mui/material';
 import {
   createDrill,
   getCurrentUsersUid,
@@ -10,18 +12,20 @@ import {
 
 const initialState = {
   firebaseKey: '',
-  private: '',
+  private: false,
   name: '',
-  conditioning: '',
+  conditioning: false,
   duration: '',
   details: '',
   coachID: '',
   teamID: '',
+  practiceID: '',
 };
 
 function CoachesDrillForm() {
   const [coachUid, setCoachUid] = useState(null);
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState(initialState);
+  const { practFBKey } = useParams();
   const { fbKey } = useParams();
   const history = useHistory();
 
@@ -37,8 +41,11 @@ function CoachesDrillForm() {
           details: obj?.details,
           coachID: obj?.coachID,
           teamID: obj?.teamID,
+          practiceID: obj?.practiceID,
         });
       });
+    } else if (practFBKey) {
+      setFormInput({ ...initialState, practiceID: practFBKey });
     } else {
       setFormInput(initialState);
     }
@@ -56,6 +63,14 @@ function CoachesDrillForm() {
     }));
   };
 
+  const handleCheck = (e) => {
+    const { name, checked } = e.target;
+    setFormInput((preState) => ({
+      ...preState,
+      [name]: checked,
+    }));
+  };
+
   const resetForm = () => {
     setFormInput({ ...initialState });
   };
@@ -70,7 +85,7 @@ function CoachesDrillForm() {
     } else {
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/drillview/:page');
+        history.push('/practiceview/:page');
       });
     }
   };
@@ -91,24 +106,39 @@ function CoachesDrillForm() {
           />
         </div>
         <div>
-          <input
-            type="text"
-            className="form-control"
-            name="private"
-            value={formInput.private || ''}
-            onChange={handleChange}
-            placeholder="Private?"
-            required
+          <FormControlLabel
+            control={(
+              <Checkbox
+                onChange={handleCheck}
+                name="private"
+                checked={formInput.private}
+              />
+            )}
+            label="Private?"
+          />
+        </div>
+        <div>
+          <FormControlLabel
+            control={(
+              <Checkbox
+                onChange={handleCheck}
+                name="conditioning"
+                checked={formInput.conditioning}
+              />
+            )}
+            label="Conditioning?"
           />
         </div>
         <div>
           <input
-            type="text"
+            type="number"
             className="form-control"
-            name="conditioning"
-            value={formInput.conditioning || ''}
+            name="duration"
+            value={formInput.duration || ''}
             onChange={handleChange}
-            placeholder="Conditioning?"
+            placeholder="Duration of Drill in minutes."
+            min="1"
+            max="240"
             required
           />
         </div>

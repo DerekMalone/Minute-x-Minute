@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { CardGroup } from 'reactstrap';
 import { CoachesDrillsComp } from '../../components';
 import { getDrills } from '../../helpers';
@@ -21,7 +20,6 @@ export default function CoachesDrillsView() {
   // function created to render to DOM. Generic function that can work if filteredDrills or just Drills
   const renderDom = (array) => (
     <>
-      {/* style={{ display: 'flex', flexDirection: 'row' }} */}
       <h1>Coaches Drill View Page</h1>
       <CardGroup>
         <div>
@@ -30,9 +28,6 @@ export default function CoachesDrillsView() {
           ))}
         </div>
       </CardGroup>
-      <Link to="/drillForm" type="button" className="btn btn-success">
-        Create a New Drill
-      </Link>
     </>
   );
 

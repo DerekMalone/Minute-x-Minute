@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Card,
@@ -8,10 +9,9 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { Link, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { deleteDrill } from '../../helpers';
 
-const CoachesDrillsComp = ({ drill }) => {
+export default function CoachesPracticeDrills({ drill }) {
   const history = useHistory();
 
   const handleDelete = () => {
@@ -19,7 +19,7 @@ const CoachesDrillsComp = ({ drill }) => {
   };
 
   return (
-    <div>
+    <>
       <Card body color="warning" outline>
         <CardBody>
           <CardTitle tag="h5">{drill.name}</CardTitle>
@@ -52,14 +52,10 @@ const CoachesDrillsComp = ({ drill }) => {
           </Button>
         </CardBody>
       </Card>
-    </div>
+    </>
   );
+}
+
+CoachesPracticeDrills.propTypes = {
+  drill: PropTypes.shape(PropTypes.obj).isRequired,
 };
-
-CoachesDrillsComp.propTypes = {
-  drill: PropTypes.shape(PropTypes.obj),
-};
-
-CoachesDrillsComp.defaultProps = { drill: {} };
-
-export default CoachesDrillsComp;
