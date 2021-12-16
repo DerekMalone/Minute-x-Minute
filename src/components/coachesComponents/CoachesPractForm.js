@@ -18,7 +18,6 @@ const initialState = {
 };
 
 function CoachesPracticeForm() {
-  // { practice }
   const [coachUid, setCoachUid] = useState(null);
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
@@ -26,7 +25,6 @@ function CoachesPracticeForm() {
 
   useEffect(() => {
     if (fbKey) {
-      // edit promise goes here.
       getSinglePractice(fbKey).then((obj) => {
         setFormInput({
           firebaseKey: obj?.firebaseKey,
@@ -66,7 +64,6 @@ function CoachesPracticeForm() {
         history.push('/practiceview/:page');
       });
     } else {
-      // create practice promise goes here.
       createPractice({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
         history.push('/practiceview/:page');

@@ -20,7 +20,6 @@ const CoachesDrillsComp = ({ drill }) => {
 
   return (
     <div>
-      {/* style={{ flex: 1 }}  */}
       <Card body color="warning" outline>
         <CardBody>
           <CardTitle tag="h5">{drill.name}</CardTitle>

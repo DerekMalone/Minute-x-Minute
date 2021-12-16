@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Table } from 'reactstrap';
+import { CardGroup } from 'reactstrap';
 import Search from '../Search';
 import CoachesPracticeComp from '../../components/coachesComponents/CoachesPracticeComp';
 import { getPractices } from '../../helpers';
@@ -28,11 +28,13 @@ export default function CoachesPracticesView() {
         </Link>
       </div>
       <>
-        <Table striped>
-          {array.map((practice) => (
-            <CoachesPracticeComp key={practice.name} practice={practice} />
-          ))}
-        </Table>
+        <div>
+          <CardGroup>
+            {array.map((practice) => (
+              <CoachesPracticeComp key={practice.name} practice={practice} />
+            ))}
+          </CardGroup>
+        </div>
       </>
     </>
   );

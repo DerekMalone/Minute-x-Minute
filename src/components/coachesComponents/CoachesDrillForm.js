@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import Checkbox from '@mui/material/Checkbox';
+import { FormControlLabel } from '@mui/material';
 import {
   createDrill,
   getCurrentUsersUid,
@@ -10,9 +12,9 @@ import {
 
 const initialState = {
   firebaseKey: '',
-  private: '',
+  private: false,
   name: '',
-  conditioning: '',
+  conditioning: false,
   duration: '',
   details: '',
   coachID: '',
@@ -22,7 +24,7 @@ const initialState = {
 
 function CoachesDrillForm() {
   const [coachUid, setCoachUid] = useState(null);
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState(initialState);
   const { practFBKey } = useParams();
   const { fbKey } = useParams();
   const history = useHistory();
@@ -61,6 +63,14 @@ function CoachesDrillForm() {
     }));
   };
 
+  const handleCheck = (e) => {
+    const { name, checked } = e.target;
+    setFormInput((preState) => ({
+      ...preState,
+      [name]: checked,
+    }));
+  };
+
   const resetForm = () => {
     setFormInput({ ...initialState });
   };
@@ -96,25 +106,27 @@ function CoachesDrillForm() {
           />
         </div>
         <div>
-          <input
-            type="text"
-            className="form-control"
-            name="private"
-            value={formInput.private || ''}
-            onChange={handleChange}
-            placeholder="Private?"
-            required
+          <FormControlLabel
+            control={(
+              <Checkbox
+                onChange={handleCheck}
+                name="private"
+                checked={formInput.private}
+              />
+            )}
+            label="Private?"
           />
         </div>
         <div>
-          <input
-            type="text"
-            className="form-control"
-            name="conditioning"
-            value={formInput.conditioning || ''}
-            onChange={handleChange}
-            placeholder="Conditioning?"
-            required
+          <FormControlLabel
+            control={(
+              <Checkbox
+                onChange={handleCheck}
+                name="conditioning"
+                checked={formInput.conditioning}
+              />
+            )}
+            label="Conditioning?"
           />
         </div>
         <div>
