@@ -19,4 +19,6 @@ export {
   createPractice,
   deletePractice,
   getSinglePractice,
+  updatePractice,
+  totalPractTime,
 } from './practiceHelpers';
