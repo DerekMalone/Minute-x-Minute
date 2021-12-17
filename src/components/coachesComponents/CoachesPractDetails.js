@@ -30,8 +30,6 @@ const CoachesPractDetails = () => {
     };
   }, []);
 
-  console.warn('debug', practDetail);
-
   let totalTime = 0;
   const timeCalc = () => {
     for (let i = 0; i < practTime.length; i++) {
