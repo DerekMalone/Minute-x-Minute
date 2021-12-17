@@ -11,10 +11,8 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import { deleteDrill } from '../../helpers';
 
-export default function CoachesPracticeDrills({ drill, func }) {
+export default function CoachesPracticeDrills({ drill }) {
   const history = useHistory();
-
-  func(drill.duration);
 
   const handleDelete = () => {
     deleteDrill(drill.firebaseKey).then(() => history.go(0));
@@ -60,5 +58,4 @@ export default function CoachesPracticeDrills({ drill, func }) {
 
 CoachesPracticeDrills.propTypes = {
   drill: PropTypes.shape(PropTypes.obj).isRequired,
-  func: PropTypes.func.isRequired,
 };

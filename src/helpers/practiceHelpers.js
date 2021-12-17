@@ -45,20 +45,10 @@ const updatePractice = (practObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-let time = 0;
-const totalPractTime = (arr) => {
-  for (let i = 0; i < arr.length; i++) {
-    time += arr[i];
-    console.warn(time);
-  }
-  return time;
-};
-
 export {
   getPractices,
   createPractice,
   deletePractice,
   getSinglePractice,
   updatePractice,
-  totalPractTime,
 };

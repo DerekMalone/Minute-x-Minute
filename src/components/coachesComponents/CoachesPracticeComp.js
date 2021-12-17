@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { deletePractice, getPractDrills } from '../../helpers'; // , totalPractTime
+import { deletePractice, getPractDrills } from '../../helpers';
 import { CoachesPracticeDrills } from '../index';
 
 const CoachesPracticeComp = ({ practice }) => {
@@ -12,51 +12,28 @@ const CoachesPracticeComp = ({ practice }) => {
 
   useEffect(() => {
     let isMounted = true;
-    getPractDrills(practice.firebaseKey).then((drills) => {
-      if (isMounted) setPractDrills(drills);
-    });
+    (async () => {
+      const fetchPractDrills = await getPractDrills(
+        practice.firebaseKey,
+      ).then();
+      const fetchDrillTimes = await fetchPractDrills;
+      if (isMounted) {
+        setPractDrills(fetchPractDrills);
+        setPractTime(fetchDrillTimes.map((drill) => Number(drill.duration)));
+      }
+    })();
     return () => {
       isMounted = false;
     };
   }, []);
 
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   (async () => {
-  //     const fetchPractDrills = await getPractDrills(
-  //       practice.firebaseKey,
-  //     ).then();
-  //     const fetchDrillTimes = await fetchPractDrills;
-  //     if (isMounted) {
-  //       setPractDrills(fetchPractDrills);
-  //       setPractTime(fetchDrillTimes.map((drill) => Number(drill.duration)));
-  //     }
-  //   })();
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   if (isMounted) {
-  //     console.warn(totalPractTime);
-  //     console.warn(mappedDrillTime);
-  //     setPractTime(mappedDrillTime.reduce(totalPractTime));
-  //   }
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, []);
-  // const totalledPractTime = setPractTime(() => {
-  //   ...
-  //   +=time
-  // });
-  // const mappedDrillTime = () => (practTime.map((time) => Number(time)));
-
-  // const renderPractTime = () => (practTime.reduce(totalPractTime));
-
-  // const renderPractTime = totalPractTime(practTime);
+  let totalTime = 0;
+  const timeCalc = () => {
+    for (let i = 0; i < practTime.length; i++) {
+      totalTime += practTime[i];
+    }
+    return totalTime;
+  };
 
   const handleDelete = () => {
     deletePractice(practice.firebaseKey).then(() => history.go(0));
@@ -67,17 +44,13 @@ const CoachesPracticeComp = ({ practice }) => {
       <div>
         <div>
           <h2>{practice.name}</h2>
-          <h4>{practice.dateTime}</h4>
-          <h5>Total Practice Duration - {practTime} Minutes</h5>
+          <h4>Practice Date: {practice.dateTime}</h4>
+          <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
         </div>
       </div>
       <div>
         {practDrills.map((drill) => (
-          <CoachesPracticeDrills
-            key={drill.name}
-            drill={drill}
-            func={setPractTime}
-          />
+          <CoachesPracticeDrills key={drill.name} drill={drill} />
         ))}
       </div>
       <div>
