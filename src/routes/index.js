@@ -11,10 +11,10 @@ import {
 } from '../views';
 import {
   CoachesDrillForm,
-  CoachesPractDetails,
   CoachesPracticeForm,
   CoachesTeamForm,
 } from '../components';
+import CoachesPractDetails from '../components/coachesComponents/CoachesPractDetails';
 // import PlayersRoutes from './PlayersRoutes';
 
 export default function Routes({ user }) {

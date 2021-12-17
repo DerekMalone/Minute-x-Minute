@@ -7,17 +7,33 @@ import { CoachesPracticeDrills } from '../index';
 
 const CoachesPracticeComp = ({ practice }) => {
   const [practDrills, setPractDrills] = useState([]);
+  const [practTime, setPractTime] = useState(0);
   const history = useHistory();
 
   useEffect(() => {
     let isMounted = true;
-    getPractDrills(practice.firebaseKey).then((drills) => {
-      if (isMounted) setPractDrills(drills);
-    });
+    (async () => {
+      const fetchPractDrills = await getPractDrills(
+        practice.firebaseKey,
+      ).then();
+      const fetchDrillTimes = await fetchPractDrills;
+      if (isMounted) {
+        setPractDrills(fetchPractDrills);
+        setPractTime(fetchDrillTimes.map((drill) => Number(drill.duration)));
+      }
+    })();
     return () => {
       isMounted = false;
     };
   }, []);
+
+  let totalTime = 0;
+  const timeCalc = () => {
+    for (let i = 0; i < practTime.length; i++) {
+      totalTime += practTime[i];
+    }
+    return totalTime;
+  };
 
   const handleDelete = () => {
     deletePractice(practice.firebaseKey).then(() => history.go(0));
@@ -28,7 +44,8 @@ const CoachesPracticeComp = ({ practice }) => {
       <div>
         <div>
           <h2>{practice.name}</h2>
-          <h4>{practice.dateTime}</h4>
+          <h4>Practice Date: {practice.dateTime}</h4>
+          <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
         </div>
       </div>
       <div>

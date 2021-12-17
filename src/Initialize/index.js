@@ -60,12 +60,6 @@ function Initialize() {
       )}
       <MinxMinNavbar user={user} />
       <Route user={user} />
-      {/* <CoachesTeamView />
-      <CoachesPracticesView />
-      <CoachesDrillsView />
-      <CoachesTeamForm />
-      <CoachesDrillForm />
-      <CoachesPracticeForm /> */}
     </>
   );
 }
