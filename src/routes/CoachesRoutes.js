@@ -8,7 +8,6 @@ import {
   CoachesEditTeam,
   CoachesPracticesView,
   CoachesTeamView,
-  Home,
 } from '../views';
 import {
   CoachesDrillForm,
@@ -20,7 +19,6 @@ import CoachesPractDetails from '../components/coachesComponents/CoachesPractDet
 export default function CoachesRoutes({ user }) {
   return (
     <Switch>
-      <Route exact path="/" component={() => <Home user={user} />} />
       <Route
         exact
         path="/teamview"

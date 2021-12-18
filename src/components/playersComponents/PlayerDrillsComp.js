@@ -1,16 +1,38 @@
-import React, { useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import {
+  Card, CardBody, CardSubtitle, CardText, CardTitle,
+} from 'reactstrap';
+import PropTypes from 'prop-types';
 
-const PlayerDrillsComp = () => {
-  useEffect(() => {
-    console.warn('You are on the Players Drills Component');
-  }, []);
+export default function PlayerDrillsComp({ drill }) {
+  return (
+    <div>
+      <Card body color="warning" outline>
+        <CardBody>
+          <CardTitle tag="h5">{drill.name}</CardTitle>
+          <div>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {drill.conditioning}
+            </CardSubtitle>
+            {drill.duration ? (
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                {drill.duration} Minutes
+              </CardSubtitle>
+            ) : (
+              ''
+            )}
+          </div>
+          <CardText>{drill.details}</CardText>
+        </CardBody>
+      </Card>
+    </div>
+  );
+}
 
-  return <div>Component for the Players Drills.</div>;
+PlayerDrillsComp.propTypes = {
+  drill: PropTypes.shape(PropTypes.obj),
 };
 
-// PlayersTeamComp.propTypes = {
+PlayerDrillsComp.defaultProps = { drill: {} };
 
-// }
-
-export default PlayerDrillsComp;
+// export default PlayerDrillsComp;

@@ -2,18 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {
-  PlayerTeamView,
-  PlayerPracticeView,
-  PlayerDrillsView,
-  Home,
-} from '../views';
+import { PlayerTeamView, PlayerPracticeView, PlayerDrillsView } from '../views';
 import PlayerPractDetails from '../components/playersComponents/PlayersPractDetails';
 
 export default function PlayersRoutes({ user }) {
   return (
     <Switch>
-      <Route exact path="/" component={() => <Home user={user} />} />
       <Route
         exact
         path="/playerTeamsView"

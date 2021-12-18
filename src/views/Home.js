@@ -1,14 +1,21 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { CoachesTeamView, PlayerTeamView } from '.';
 
-export default function Home() {
+export default function Home({ user }) {
   return (
-    <div>
-      <h3>Temporary home screen</h3>
-    </div>
+    <>
+      {user?.isCoach ? (
+        <CoachesTeamView user={user} />
+      ) : (
+        <PlayerTeamView user={user} />
+      )}
+    </>
   );
 }
 
-// Home.propTypes = {
+Home.propTypes = {
+  user: PropTypes.shape(PropTypes.obj),
+};
 
-// }
+Home.defaultProps = { user: null };
