@@ -24,10 +24,10 @@ function MinxMinNavbar({ user }) {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="container-fluid" navbar>
-            {user ? (
+            {user.isCoach ? (
               <>
                 <NavItem>
-                  <NavLink href="/">My Team</NavLink>
+                  <NavLink href="/teamview">My Team</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink href="/practiceview/:practice">Practices</NavLink>
@@ -46,7 +46,26 @@ function MinxMinNavbar({ user }) {
                 </li>
               </>
             ) : (
-              'Nothing here'
+              <>
+                <NavItem>
+                  <NavLink href="/playerTeamsView">My Team</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/playerPracticesView">Practices</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/playerDrillsView">Drills</NavLink>
+                </NavItem>
+                <li className="nav-item">
+                  <button
+                    type="button"
+                    className="btn btn-warning"
+                    onClick={signOutUser}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
               // <>
               //   <NavItem>
               //     <NavLink href="//teamview">Teams</NavLink>

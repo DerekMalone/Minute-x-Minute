@@ -1,8 +1,20 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'; // , Redirect
 import PropTypes from 'prop-types';
-import { CoachesTeamView } from '../views';
-import { CoachesTeamForm } from '../components';
+import {
+  CoachesDrillsView,
+  CoachesEditDrill,
+  CoachesEditPractice,
+  CoachesEditTeam,
+  CoachesPracticesView,
+  CoachesTeamView,
+} from '../views';
+import {
+  CoachesDrillForm,
+  CoachesPracticeForm,
+  CoachesTeamForm,
+} from '../components';
+import CoachesPractDetails from '../components/coachesComponents/CoachesPractDetails';
 
 export default function CoachesRoutes({ user }) {
   return (
@@ -12,16 +24,43 @@ export default function CoachesRoutes({ user }) {
         path="/teamview"
         component={() => <CoachesTeamView user={user} />}
       />
-      <Route exact path="/teamForm">
-        <CoachesTeamForm />
-      </Route>
-      {/* <Route exact path="/edit/:key" component={Edit} />
-      <Route exact path="/create" component={() => <Create user={user} />} /> */}
-      {/* <Route
+      <Route
         exact
-        path="/edit-card"
-        component={() => <EditCard user={user} />}
-      /> */}
+        path="/practiceview/:page"
+        component={() => <CoachesPracticesView user={user} />}
+      />
+      <Route
+        exact
+        path="/practicedetials/:fbKey"
+        component={() => <CoachesPractDetails user={user} />}
+      />
+      <Route
+        exact
+        path="/drillview/:page"
+        component={() => <CoachesDrillsView user={user} />}
+      />
+      <Route
+        exact
+        path="/teamForm"
+        component={() => <CoachesTeamForm user={user} />}
+      />
+      <Route
+        exact
+        path="/practiceForm"
+        component={() => <CoachesPracticeForm user={user} />}
+      />
+      <Route
+        exact
+        path="/drillForm/:practFBKey"
+        component={() => <CoachesDrillForm user={user} />}
+      />
+      <Route exact path="/editteam/:fbKey" component={CoachesEditTeam} />
+      <Route
+        exact
+        path="/editpractice/:fbKey"
+        component={CoachesEditPractice}
+      />
+      <Route exact path="/editdrill/:fbKey" component={CoachesEditDrill} />
     </Switch>
   );
 }

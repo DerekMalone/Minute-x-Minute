@@ -26,14 +26,14 @@ function Initialize() {
           isCoach: true,
         };
         setUser(userObj);
-        // } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
-        //   const userObj = {
-        //     uid: authed.uid,
-        //     fullName: authed.displayName,
-        //     user: authed.email.split('@')[0],
-        //     profileImage: authed.photoURL,
-        //     isCoach: false,
-        //   };
+      } else if (authed && authed.uid !== process.env.REACT_APP_COACH_UID) {
+        const userObj = {
+          uid: authed.uid,
+          fullName: authed.displayName,
+          user: authed.email.split('@')[0],
+          profileImage: authed.photoURL,
+          isCoach: false,
+        };
         setUser(userObj);
       } else if (user || user === null) {
         setUser(null);
@@ -46,20 +46,13 @@ function Initialize() {
       {user ? (
         <>
           <div className="text-center mt-2">
-            {/* <button
-            type="button"
-            className="btn btn-danger"
-            onClick={signOutUser}
-          >
-            Sign Out
-          </button> */}
+            <MinxMinNavbar user={user} />
+            <Route user={user} />
           </div>
         </>
       ) : (
         <SignIn user={user} />
       )}
-      <MinxMinNavbar user={user} />
-      <Route user={user} />
     </>
   );
 }

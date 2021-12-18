@@ -2,23 +2,32 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { PlayerTeamView } from '../views';
-
-// import Create from '../views/Create';
-// import Edit from '../views/Edit';
-// import EditCard from '../views/EditCard';
+import { PlayerTeamView, PlayerPracticeView, PlayerDrillsView } from '../views';
+import PlayerPractDetails from '../components/playersComponents/PlayersPractDetails';
 
 export default function PlayersRoutes({ user }) {
   return (
     <Switch>
-      <Route exact path="/" component={() => <PlayerTeamView user={user} />} />
-      {/* <Route exact path="/edit/:key" component={Edit} />
-      <Route exact path="/create" component={() => <Create user={user} />} /> */}
-      {/* <Route
+      <Route
         exact
-        path="/edit-card"
-        component={() => <EditCard user={user} />}
-      /> */}
+        path="/playerTeamsView"
+        component={() => <PlayerTeamView user={user} />}
+      />
+      <Route
+        exact
+        path="/playerPracticesView"
+        component={() => <PlayerPracticeView user={user} />}
+      />
+      <Route
+        exact
+        path="/playerpracticedetials/:fbKey"
+        component={() => <PlayerPractDetails user={user} />}
+      />
+      <Route
+        exact
+        path="/playerDrillsView"
+        component={() => <PlayerDrillsView user={user} />}
+      />
     </Switch>
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, CardBody, CardSubtitle, CardText, CardTitle,
 } from 'reactstrap';
-import PropTypes from 'prop-types';
 
-export default function PlayerDrillsComp({ drill }) {
+export default function PlayerPracticeDrills({ drill }) {
   return (
-    <div>
+    <>
       <Card body color="warning" outline>
         <CardBody>
           <CardTitle tag="h5">{drill.name}</CardTitle>
@@ -25,14 +25,10 @@ export default function PlayerDrillsComp({ drill }) {
           <CardText>{drill.details}</CardText>
         </CardBody>
       </Card>
-    </div>
+    </>
   );
 }
 
-PlayerDrillsComp.propTypes = {
-  drill: PropTypes.shape(PropTypes.obj),
+PlayerPracticeDrills.propTypes = {
+  drill: PropTypes.shape(PropTypes.obj).isRequired,
 };
-
-PlayerDrillsComp.defaultProps = { drill: {} };
-
-// export default PlayerDrillsComp;
