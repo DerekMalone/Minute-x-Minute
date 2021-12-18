@@ -18,8 +18,6 @@ export default function PlayerDrillsView() {
     };
   }, []);
 
-  console.warn('DrillView', drills);
-
   // function created to render to DOM. Generic function that can work if filteredDrills or just Drills
   const renderDom = (array) => (
     <>
