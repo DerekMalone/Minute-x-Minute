@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import CoachesRoutes from './CoachesRoutes';
 import PlayersRoutes from './PlayersRoutes';
-import { Home } from '../views';
+import Home from '../views/Home';
 
 export default function Routes({ user }) {
   return (

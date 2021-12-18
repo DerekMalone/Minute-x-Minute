@@ -25,7 +25,7 @@ const CoachesDrillsComp = ({ drill }) => {
           <CardTitle tag="h5">{drill.name}</CardTitle>
           <div>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {drill.conditioning}
+              Conditioning: {drill.conditioning === 'true' ? 'True' : 'False'}
             </CardSubtitle>
             {drill.duration ? (
               <CardSubtitle className="mb-2 text-muted" tag="h6">

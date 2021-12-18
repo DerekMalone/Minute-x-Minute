@@ -7,24 +7,32 @@ import {
 export default function PlayerPracticeDrills({ drill }) {
   return (
     <>
-      <Card body color="warning" outline>
-        <CardBody>
-          <CardTitle tag="h5">{drill.name}</CardTitle>
-          <div>
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
-              {drill.conditioning}
-            </CardSubtitle>
-            {drill.duration ? (
+      {drill.conditioning === true ? (
+        <Card body color="warning" outline>
+          <CardBody>
+            <CardTitle tag="h5">Conditioning</CardTitle>
+          </CardBody>
+        </Card>
+      ) : (
+        <Card body color="warning" outline>
+          <CardBody>
+            <CardTitle tag="h5">{drill.name}</CardTitle>
+            <div>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                {drill.duration} Minutes
+                Conditioning: {drill.conditioning === 'true' ? 'True' : 'False'}
               </CardSubtitle>
-            ) : (
-              ''
-            )}
-          </div>
-          <CardText>{drill.details}</CardText>
-        </CardBody>
-      </Card>
+              {drill.duration ? (
+                <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  {drill.duration} Minutes
+                </CardSubtitle>
+              ) : (
+                ''
+              )}
+            </div>
+            <CardText>{drill.details}</CardText>
+          </CardBody>
+        </Card>
+      )}
     </>
   );
 }
