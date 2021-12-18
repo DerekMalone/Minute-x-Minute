@@ -49,7 +49,7 @@ const PlayersPracticeComponent = ({ practice }) => {
       </div>
       <div>
         <Link
-          to={`/practicedetials/${practice.firebaseKey}`}
+          to={`/playerpracticedetials/${practice.firebaseKey}`}
           type="button"
           className="btn btn-success"
         >

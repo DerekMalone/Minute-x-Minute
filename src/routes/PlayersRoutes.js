@@ -8,6 +8,7 @@ import {
   PlayerDrillsView,
   Home,
 } from '../views';
+import PlayerPractDetails from '../components/playersComponents/PlayersPractDetails';
 
 export default function PlayersRoutes({ user }) {
   return (
@@ -22,6 +23,11 @@ export default function PlayersRoutes({ user }) {
         exact
         path="/playerPracticesView"
         component={() => <PlayerPracticeView user={user} />}
+      />
+      <Route
+        exact
+        path="/playerpracticedetials/:fbKey"
+        component={() => <PlayerPractDetails user={user} />}
       />
       <Route
         exact
