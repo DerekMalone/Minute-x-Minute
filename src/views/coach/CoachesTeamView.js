@@ -1,10 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { CoachesTeamComp } from '../../components';
 import { getTeams } from '../../helpers/index';
 
 export default function CoachesTeamView() {
   const [teams, setTeams] = useState([]);
+
+  const TeamContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  `;
+
+  const TeamCardsContainer = styled.div`
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  `;
+
+  const TeamTitle = styled.h1`
+    justify-content: center;
+    color: #007a4b;
+  `;
+
+  const TeamCards = styled.div`
+    justify-content: center;
+    width: 80%;
+    margin: 1rem;
+  `;
+
+  const TeamLink = styled.div`
+    justify-content: center;
+    margin: 2rem 0;
+    width: 40rem;
+  `;
 
   useEffect(() => {
     let isMounted = true;
@@ -17,25 +46,33 @@ export default function CoachesTeamView() {
   }, []);
 
   return (
-    <div>
-      {teams ? (
-        <>
-          <h1>Coaches Team View Page</h1>
-          {teams.map((team) => (
-            <CoachesTeamComp key={team.teamName} team={team} />
-          ))}
-          <Link to="/teamForm" type="button" className="btn btn-success">
-            Create a New Team
-          </Link>
-        </>
-      ) : (
-        <>
-          <h4>No Team yet</h4>
-          <button type="button" className="btn btn-success">
-            Create a New Team
-          </button>
-        </>
-      )}
-    </div>
+    <TeamCardsContainer>
+      <TeamTitle>Coaches Team View Page</TeamTitle>
+      <TeamContainer>
+        {teams ? (
+          <>
+            <TeamCards>
+              <div>
+                {teams.map((team) => (
+                  <CoachesTeamComp key={team.teamName} team={team} />
+                ))}
+              </div>
+              <TeamLink>
+                <Link to="/teamForm" type="button" className="btn btn-success">
+                  Create a New Team
+                </Link>
+              </TeamLink>
+            </TeamCards>
+          </>
+        ) : (
+          <>
+            <h4>No Team yet</h4>
+            <button type="button" className="btn btn-success">
+              Create a New Team
+            </button>
+          </>
+        )}
+      </TeamContainer>
+    </TeamCardsContainer>
   );
 }
