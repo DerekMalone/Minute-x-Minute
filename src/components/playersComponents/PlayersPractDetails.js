@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { CardGroup } from 'reactstrap';
 import { PlayerPracticeDrills } from '..';
@@ -9,6 +10,42 @@ const PlayerPractDetails = () => {
   const [drillArray, setDrillArray] = useState([]);
   const [practTime, setPractTime] = useState(0);
   const { fbKey } = useParams();
+
+  const PlayerPractDetailsContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 2rem 0;
+  `;
+
+  const PlayersPractDetailStyling = styled.div`
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+
+    h2 {
+      color: #007a4b;
+    }
+    h4 {
+      color: #007a4b;
+    }
+    h5 {
+      color: #007a4b;
+    }
+  `;
+
+  const PlayersPractInfoCont = styled.div`
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+  `;
+
+  const PlayersDrillsContainer = styled.div`
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+    width: 80%;
+  `;
 
   useEffect(() => {
     let isMounted = true;
@@ -38,26 +75,32 @@ const PlayerPractDetails = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>{practDetail.name}</h2>
-      </div>
-      <div>
-        <h4>Practice Date: {practDetail.dateTime}</h4>
-      </div>
-      <div>
-        <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
-      </div>
-      <div>
-        <CardGroup>
+    <PlayerPractDetailsContainer>
+      <PlayersPractDetailStyling>
+        <PlayersPractInfoCont>
           <div>
-            {drillArray.map((drill) => (
-              <PlayerPracticeDrills key={drill.name} drill={drill} />
-            ))}
+            <h2>{practDetail.name}</h2>
           </div>
-        </CardGroup>
-      </div>
-    </div>
+          <div>
+            <h4>Practice Date: {practDetail.dateTime}</h4>
+          </div>
+          <div>
+            <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
+          </div>
+        </PlayersPractInfoCont>
+        <div>
+          <PlayersDrillsContainer>
+            <CardGroup>
+              <div>
+                {drillArray.map((drill) => (
+                  <PlayerPracticeDrills key={drill.name} drill={drill} />
+                ))}
+              </div>
+            </CardGroup>
+          </PlayersDrillsContainer>
+        </div>
+      </PlayersPractDetailStyling>
+    </PlayerPractDetailsContainer>
   );
 };
 
