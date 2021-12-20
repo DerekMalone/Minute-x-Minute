@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { CardGroup } from 'reactstrap';
@@ -10,6 +11,38 @@ const CoachesPractDetails = () => {
   const [drillArray, setDrillArray] = useState([]);
   const [practTime, setPractTime] = useState(0);
   const { fbKey } = useParams();
+
+  const PractDetailsContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 2rem 0;
+
+    h2 {
+      color: #007a4b;
+    }
+    h4 {
+      color: #007a4b;
+    }
+    h5 {
+      color: #007a4b;
+    }
+  `;
+
+  const PractInfoContainer = styled.div`
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+  `;
+
+  const DrillsContainer = styled.div`
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+    width: 80%;
+  `;
+
+  const PractDrills = styled.div``;
 
   useEffect(() => {
     let isMounted = true;
@@ -39,25 +72,27 @@ const CoachesPractDetails = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>{practDetail.name}</h2>
-      </div>
-      <div>
-        <h4>Practice Date: {practDetail.dateTime}</h4>
-      </div>
-      <div>
-        <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
-      </div>
-      <div>
+    <PractDetailsContainer>
+      <PractInfoContainer>
+        <div>
+          <h2>{practDetail.name}</h2>
+        </div>
+        <div>
+          <h4>Practice Date: {practDetail.dateTime}</h4>
+        </div>
+        <div>
+          <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
+        </div>
+      </PractInfoContainer>
+      <DrillsContainer>
         <CardGroup>
-          <div>
+          <PractDrills>
             {drillArray.map((drill) => (
               <CoachesPracticeDrills key={drill.name} drill={drill} />
             ))}
-          </div>
+          </PractDrills>
         </CardGroup>
-      </div>
+      </DrillsContainer>
       <div>
         <Link
           to={`/drillForm/${practDetail.firebaseKey}`}
@@ -67,7 +102,7 @@ const CoachesPractDetails = () => {
           Add New Drill
         </Link>
       </div>
-    </div>
+    </PractDetailsContainer>
   );
 };
 

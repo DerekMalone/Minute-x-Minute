@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
+import styled from 'styled-components';
 
 const Search = ({ func, array }) => {
   // accepts array of obj or string
   const [searchField, setSearchField] = useState('');
+
+  const SearchStyle = styled.div`
+    display: flex;
+    margin: 1rem;
+    width: 100%;
+    justify-content: center;
+  `;
+
+  const Searchbar = styled.div`
+    flex-wrap: wrap;
+    width: 75%;
+  `;
 
   // filters the array passed in passed in based name
   const filteredItems = () => array.filter((arrItem) => arrItem.name.toLowerCase().includes(searchField.toLowerCase()));
@@ -23,10 +36,14 @@ const Search = ({ func, array }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Input value={searchField} onChange={handleChange} />
-        <Button type="submit">Search</Button>
-      </form>
+      <SearchStyle>
+        <Searchbar>
+          <form onSubmit={handleSubmit}>
+            <Input value={searchField} onChange={handleChange} />
+            <Button type="submit">Search</Button>
+          </form>
+        </Searchbar>
+      </SearchStyle>
     </>
   );
 };

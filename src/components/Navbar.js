@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
   Collapse,
@@ -15,10 +16,17 @@ import { signOutUser } from '../api/auth';
 function MinxMinNavbar({ user }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const NavStyle = styled.div`
+    margin: 0;
+
+    .Navbar {
+    }
+  `;
+
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <NavStyle>
       <Navbar color="light" expand="md" light>
         <NavbarBrand href="/">Minute x Minute</NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -84,7 +92,7 @@ function MinxMinNavbar({ user }) {
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </NavStyle>
   );
 }
 
