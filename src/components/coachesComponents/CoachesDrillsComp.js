@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   Button,
   Card,
@@ -14,18 +15,22 @@ import { deleteDrill } from '../../helpers';
 const CoachesDrillsComp = ({ drill }) => {
   const history = useHistory();
 
+  const DrillCardStyle = styled.div`
+    margin: 1rem;
+  `;
+
   const handleDelete = () => {
     deleteDrill(drill.firebaseKey).then(() => history.go(0));
   };
 
   return (
-    <div>
+    <DrillCardStyle>
       <Card body color="warning" outline>
         <CardBody>
           <CardTitle tag="h5">{drill.name}</CardTitle>
           <div>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
-              Conditioning: {drill.conditioning === 'true' ? 'True' : 'False'}
+              {drill.conditioning === 'true' ? 'Conditioning' : ''}
             </CardSubtitle>
             {drill.duration ? (
               <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -52,7 +57,7 @@ const CoachesDrillsComp = ({ drill }) => {
           </Button>
         </CardBody>
       </Card>
-    </div>
+    </DrillCardStyle>
   );
 };
 
