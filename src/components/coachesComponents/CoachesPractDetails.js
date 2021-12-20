@@ -16,6 +16,12 @@ const CoachesPractDetails = () => {
     display: flex;
     width: 100%;
     margin: 2rem 0;
+  `;
+
+  const PractDetailStyling = styled.div`
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 
     h2 {
       color: #007a4b;
@@ -73,35 +79,37 @@ const CoachesPractDetails = () => {
 
   return (
     <PractDetailsContainer>
-      <PractInfoContainer>
+      <PractDetailStyling>
+        <PractInfoContainer>
+          <div>
+            <h2>{practDetail.name}</h2>
+          </div>
+          <div>
+            <h4>Practice Date: {practDetail.dateTime}</h4>
+          </div>
+          <div>
+            <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
+          </div>
+        </PractInfoContainer>
+        <DrillsContainer>
+          <CardGroup>
+            <PractDrills>
+              {drillArray.map((drill) => (
+                <CoachesPracticeDrills key={drill.name} drill={drill} />
+              ))}
+            </PractDrills>
+          </CardGroup>
+        </DrillsContainer>
         <div>
-          <h2>{practDetail.name}</h2>
+          <Link
+            to={`/drillForm/${practDetail.firebaseKey}`}
+            type="button"
+            className="btn btn-success"
+          >
+            Add New Drill
+          </Link>
         </div>
-        <div>
-          <h4>Practice Date: {practDetail.dateTime}</h4>
-        </div>
-        <div>
-          <h5>Total Practice Duration - {timeCalc()} Minutes</h5>
-        </div>
-      </PractInfoContainer>
-      <DrillsContainer>
-        <CardGroup>
-          <PractDrills>
-            {drillArray.map((drill) => (
-              <CoachesPracticeDrills key={drill.name} drill={drill} />
-            ))}
-          </PractDrills>
-        </CardGroup>
-      </DrillsContainer>
-      <div>
-        <Link
-          to={`/drillForm/${practDetail.firebaseKey}`}
-          type="button"
-          className="btn btn-success"
-        >
-          Add New Drill
-        </Link>
-      </div>
+      </PractDetailStyling>
     </PractDetailsContainer>
   );
 };

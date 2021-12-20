@@ -17,6 +17,10 @@ export default function CoachesPracticeDrills({ drill }) {
 
   const DrillCardStyle = styled.div`
     margin: 1rem;
+
+    h5 {
+      color: black;
+    }
   `;
 
   const handleDelete = () => {
@@ -31,7 +35,7 @@ export default function CoachesPracticeDrills({ drill }) {
             <CardTitle tag="h5">{drill.name}</CardTitle>
             <div>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                Conditioning: {drill.conditioning === 'true' ? 'True' : 'False'}
+                {drill.conditioning === 'true' ? 'Conditioning' : ''}
               </CardSubtitle>
               {drill.duration ? (
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
