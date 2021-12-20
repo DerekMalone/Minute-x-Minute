@@ -1,12 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   Card, CardBody, CardSubtitle, CardText, CardTitle,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 export default function PlayerDrillsComp({ drill }) {
+  const DrillCardStyle = styled.div`
+    margin: 1rem;
+  `;
+
   return (
-    <div>
+    <DrillCardStyle>
       <Card body color="warning" outline>
         <CardBody>
           <CardTitle tag="h5">{drill.name}</CardTitle>
@@ -25,7 +30,7 @@ export default function PlayerDrillsComp({ drill }) {
           <CardText>{drill.details}</CardText>
         </CardBody>
       </Card>
-    </div>
+    </DrillCardStyle>
   );
 }
 
