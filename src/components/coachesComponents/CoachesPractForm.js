@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -23,14 +22,6 @@ function CoachesPracticeForm() {
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
   const history = useHistory();
-
-  const PracticeFormStyle = styled.div`
-    margin: 2rem;
-
-    h3 {
-      color: #007a4b;
-    }
-  `;
 
   useEffect(() => {
     if (fbKey) {
@@ -81,9 +72,9 @@ function CoachesPracticeForm() {
   };
 
   return (
-    <PracticeFormStyle>
-      <h3>Add/Edit Practice Form</h3>
-      <form onSubmit={handleSubmit}>
+    <>
+      <h3 style={{ color: '#007a4b' }}>Add/Edit Practice Form</h3>
+      <form stlye={{ margin: '2rem' }} onSubmit={handleSubmit}>
         <div>
           <input
             type="date"
@@ -123,7 +114,7 @@ function CoachesPracticeForm() {
           </button>
         </div>
       </form>
-    </PracticeFormStyle>
+    </>
   );
 }
 

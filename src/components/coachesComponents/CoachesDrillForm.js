@@ -29,13 +29,13 @@ function CoachesDrillForm() {
   const { fbKey } = useParams();
   const history = useHistory();
 
-  const CoachesDrillFormStyle = styled.div`
-    margin: 2rem;
+  // const CoachesDrillFormStyle = styled.div`
+  //   margin: 2rem;
 
-    h3 {
-      color: #007a4b;
-    }
-  `;
+  //   h3 {
+  //     color: #007a4b;
+  //   }
+  // `;
 
   const CheckBoxStyle = styled.div`
     color: #e65722;
@@ -92,19 +92,19 @@ function CoachesDrillForm() {
     if (fbKey) {
       updateDrill(formInput).then(() => {
         resetForm();
-        history.push('/drillview/:page');
+        history.push('/drillview');
       });
     } else {
       createDrill({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/practiceview/:page');
+        history.push('/practiceview');
       });
     }
   };
 
   return (
-    <CoachesDrillFormStyle>
-      <h3>Add/Edit Drill Form</h3>
+    <>
+      <h3 stlye={{ margin: '2rem' }}>Add/Edit Drill Form</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -175,7 +175,7 @@ function CoachesDrillForm() {
           </div>
         </CheckBoxStyle>
       </form>
-    </CoachesDrillFormStyle>
+    </>
   );
 }
 
