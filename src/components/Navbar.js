@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
@@ -74,20 +73,6 @@ function MinxMinNavbar({ user }) {
                   </button>
                 </li>
               </>
-              // <>
-              //   <NavItem>
-              //     <NavLink href="//teamview">Teams</NavLink>
-              //   </NavItem>
-              //   <NavItem>
-              //     <NavLink href="/contact">Contact Info</NavLink>
-              //   </NavItem>
-              //   <NavItem>
-              //     <NavLink href="/tech">Tech Stacks</NavLink>
-              //   </NavItem>
-              //   <NavItem>
-              //     <NavLink href="/projects">Projects</NavLink>
-              //   </NavItem>
-              // </>
             )}
           </Nav>
         </Collapse>

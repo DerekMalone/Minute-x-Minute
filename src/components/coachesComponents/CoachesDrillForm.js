@@ -9,7 +9,6 @@ import {
   getSingleDrill,
   updateDrill,
 } from '../../helpers';
-// import PropTypes from 'prop-types'
 
 const initialState = {
   firebaseKey: '',

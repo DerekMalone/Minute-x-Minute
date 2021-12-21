@@ -1,5 +1,4 @@
 export { default as SignIn } from './SignIn';
-// export { default as Home } from './Home';
 export { default as Authenticated } from './Authenticated';
 export { default as CoachesDrillsView } from './coach/CoachesDrillsView';
 export { default as CoachesPracticesView } from './coach/CoachesPracticesView';
@@ -10,4 +9,3 @@ export { default as PlayerTeamView } from './player/PlayerTeamView';
 export { default as CoachesEditTeam } from './coach/CoachesEditTeam';
 export { default as CoachesEditPractice } from './coach/CoachesEditPractice';
 export { default as CoachesEditDrill } from './coach/CoachesEditDrill';
-// export { default as Search } from './Search';
