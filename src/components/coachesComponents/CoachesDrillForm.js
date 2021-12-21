@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import { FormControlLabel } from '@mui/material';
@@ -28,6 +29,18 @@ function CoachesDrillForm() {
   const { practFBKey } = useParams();
   const { fbKey } = useParams();
   const history = useHistory();
+
+  const CoachesDrillFormStyle = styled.div`
+    margin: 2rem;
+
+    h3 {
+      color: #007a4b;
+    }
+  `;
+
+  const CheckBoxStyle = styled.div`
+    color: #e65722;
+  `;
 
   useEffect(() => {
     if (fbKey) {
@@ -91,7 +104,7 @@ function CoachesDrillForm() {
   };
 
   return (
-    <>
+    <CoachesDrillFormStyle>
       <h3>Add/Edit Drill Form</h3>
       <form onSubmit={handleSubmit}>
         <div>
@@ -103,30 +116,6 @@ function CoachesDrillForm() {
             onChange={handleChange}
             placeholder="Drill Name"
             required
-          />
-        </div>
-        <div>
-          <FormControlLabel
-            control={(
-              <Checkbox
-                onChange={handleCheck}
-                name="private"
-                checked={formInput.private}
-              />
-            )}
-            label="Private?"
-          />
-        </div>
-        <div>
-          <FormControlLabel
-            control={(
-              <Checkbox
-                onChange={handleCheck}
-                name="conditioning"
-                checked={formInput.conditioning}
-              />
-            )}
-            label="Conditioning?"
           />
         </div>
         <div>
@@ -153,13 +142,41 @@ function CoachesDrillForm() {
             required
           />
         </div>
-        <div className="form-btn-group">
-          <button type="submit" className="btn btn-success">
-            {fbKey ? 'Update' : 'Submit'}
-          </button>
-        </div>
+        <CheckBoxStyle>
+          <div>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  onChange={handleCheck}
+                  name="private"
+                  checked={formInput.private}
+                  style={{ color: '#e65722' }}
+                />
+              )}
+              label="Private?"
+            />
+          </div>
+          <div>
+            <FormControlLabel
+              control={(
+                <Checkbox
+                  onChange={handleCheck}
+                  name="conditioning"
+                  checked={formInput.conditioning}
+                  style={{ color: '#e65722' }}
+                />
+              )}
+              label="Conditioning?"
+            />
+          </div>
+          <div className="form-btn-group">
+            <button type="submit" className="btn btn-success">
+              {fbKey ? 'Update' : 'Submit'}
+            </button>
+          </div>
+        </CheckBoxStyle>
       </form>
-    </>
+    </CoachesDrillFormStyle>
   );
 }
 

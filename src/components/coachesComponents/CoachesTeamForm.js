@@ -1,7 +1,6 @@
-// import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-
+import styled from 'styled-components';
 import { createTeam, getSigleTeam } from '../../helpers/index';
 import { updateTeam } from '../../helpers/teamHelpers';
 
@@ -11,10 +10,17 @@ const initialState = {
 };
 
 function CoachesTeamForm() {
-  // { team }
   const [formInput, setFormInput] = useState({});
   const { fbKey } = useParams();
   const history = useHistory();
+
+  const CoachesTeamFormStyle = styled.div`
+    margin: 2rem;
+
+    h3 {
+      color: #007a4b;
+    }
+  `;
 
   useEffect(() => {
     if (fbKey) {
@@ -57,7 +63,7 @@ function CoachesTeamForm() {
   };
 
   return (
-    <>
+    <CoachesTeamFormStyle>
       <h3>Add/Edit Team Form</h3>
       <form onSubmit={handleSubmit}>
         <div>
@@ -77,17 +83,8 @@ function CoachesTeamForm() {
           </button>
         </div>
       </form>
-    </>
+    </CoachesTeamFormStyle>
   );
 }
-
-// CoachesTeamForm.propTypes = {
-//   team: PropTypes.shape({
-//     firebaseKey: PropTypes.string,
-//     teamName: PropTypes.string,
-//   }),
-// };
-
-// CoachesTeamForm.defaultProps = { team: {} };
 
 export default CoachesTeamForm;
