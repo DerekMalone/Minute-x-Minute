@@ -39,7 +39,7 @@ export default function CoachesPracticeDrills({ drill }) {
               </CardSubtitle>
               {drill.duration ? (
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
-                  {drill.duration} Minutes
+                  Drill Duration: {drill.duration} Minutes
                 </CardSubtitle>
               ) : (
                 ''

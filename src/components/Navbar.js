@@ -37,10 +37,10 @@ function MinxMinNavbar({ user }) {
                   <NavLink href="/teamview">My Team</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/practiceview/:practice">Practices</NavLink>
+                  <NavLink href="/practiceview">Practices</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/drillview/:drill">Drills</NavLink>
+                  <NavLink href="/drillview">Drills</NavLink>
                 </NavItem>
                 <li className="nav-item">
                   <button

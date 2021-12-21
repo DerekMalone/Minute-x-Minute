@@ -26,7 +26,7 @@ export default function CoachesRoutes({ user }) {
       />
       <Route
         exact
-        path="/practiceview/:page"
+        path="/practiceview"
         component={() => <CoachesPracticesView user={user} />}
       />
       <Route
@@ -36,7 +36,7 @@ export default function CoachesRoutes({ user }) {
       />
       <Route
         exact
-        path="/drillview/:page"
+        path="/drillview"
         component={() => <CoachesDrillsView user={user} />}
       />
       <Route
