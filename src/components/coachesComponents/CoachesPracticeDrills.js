@@ -35,7 +35,7 @@ export default function CoachesPracticeDrills({ drill }) {
             <CardTitle tag="h5">{drill.name}</CardTitle>
             <div>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
-                {drill.conditioning === 'true' ? 'Conditioning' : ''}
+                {drill.conditioning === true ? 'Conditioning' : ''}
               </CardSubtitle>
               {drill.duration ? (
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
