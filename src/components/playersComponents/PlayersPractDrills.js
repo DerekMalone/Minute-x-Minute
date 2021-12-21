@@ -16,7 +16,7 @@ export default function PlayerPracticeDrills({ drill }) {
 
   return (
     <>
-      {drill.conditioning === 'true' ? (
+      {drill.conditioning === true ? (
         <DrillCardStyle>
           <Card body color="warning" outline>
             <CardBody>
@@ -31,7 +31,7 @@ export default function PlayerPracticeDrills({ drill }) {
               <CardTitle tag="h5">{drill.name}</CardTitle>
               <div>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
-                  {drill.conditioning === 'true' ? 'Conditioning' : ''}
+                  {drill.conditioning === true ? 'Conditioning' : ''}
                 </CardSubtitle>
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                   Drill Duration: {drill.duration} Minutes
