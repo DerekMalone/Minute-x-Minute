@@ -31,6 +31,8 @@ As a player, you will be able to view the next date of practice. As a player, yo
 ## Screenshots of your project
 
 ## Code Sample I am proud of:
+
+```
 useEffect(() => {
     let isMounted = true;
     (async () => {
@@ -49,6 +51,7 @@ useEffect(() => {
       isMounted = false;
     };
   }, []);
+  ```
 
 ## Contributors
 - Derek Malone - https://github.com/DerekMalone
