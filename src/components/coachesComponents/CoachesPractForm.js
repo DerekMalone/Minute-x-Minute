@@ -61,12 +61,12 @@ function CoachesPracticeForm() {
     if (fbKey) {
       updatePractice(formInput).then(() => {
         resetForm();
-        history.push('/practiceview/:page');
+        history.push('/practiceview');
       });
     } else {
       createPractice({ ...formInput, coachID: coachUid }).then(() => {
         resetForm();
-        history.push('/practiceview/:page');
+        history.push('/practiceview');
       });
     }
   };
