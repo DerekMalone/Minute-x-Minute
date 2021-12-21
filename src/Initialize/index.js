@@ -4,13 +4,6 @@ import firebase from 'firebase/app';
 import MinxMinNavbar from '../components/Navbar';
 import Route from '../routes/index';
 import { SignIn } from '../views';
-//  CoachesTeamView,  , CoachesDrillsView from above line
-// import {
-//   CoachesTeamForm,
-//   CoachesDrillForm,
-//   CoachesPracticeForm,
-// } from '../components';
-// import CoachesPracticesView from '../views/coach/CoachesPracticesView';
 
 function Initialize() {
   const [user, setUser] = useState({});
@@ -56,13 +49,5 @@ function Initialize() {
     </>
   );
 }
-
-/* <button
-type="button"
-className="btn btn-danger"
-onClick={signOutUser}
->
-Sign Out
-</button> */
 
 export default Initialize;

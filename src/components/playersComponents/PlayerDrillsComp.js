@@ -39,5 +39,3 @@ PlayerDrillsComp.propTypes = {
 };
 
 PlayerDrillsComp.defaultProps = { drill: {} };
-
-// export default PlayerDrillsComp;
