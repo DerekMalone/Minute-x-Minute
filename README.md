@@ -30,8 +30,28 @@ As a player, you will be able to view the next date of practice. As a player, yo
 
 ## Screenshots of your project
 
+## Code Sample I am proud of:
+useEffect(() => {
+    let isMounted = true;
+    (async () => {
+      const fetchSinglePract = await getSinglePractice(fbKey).then();
+      const fetchPractDrills = await getPractDrills(
+        fetchSinglePract.firebaseKey,
+      ).then();
+      const fetchDrillTimes = await fetchPractDrills;
+      if (isMounted) {
+        setPractDetail(fetchSinglePract);
+        setDrillArray(fetchPractDrills);
+        setPractTime(fetchDrillTimes.map((drill) => Number(drill.duration)));
+      }
+    })();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
 ## Contributors
-- 
+- Derek Malone - https://github.com/DerekMalone
 
 ## Loom Video Walkthrough
 - 
