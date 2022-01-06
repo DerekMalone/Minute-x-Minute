@@ -31,6 +31,11 @@ export default function CoachesPracticesView() {
     margin: 2rem;
   `;
 
+  const SearchContainer = styled.div`
+    width: 80%;
+    margin: 0 10%;
+  `;
+
   useEffect(() => {
     let isMounted = true;
     getPractices().then((practArray) => {
@@ -65,7 +70,9 @@ export default function CoachesPracticesView() {
 
   return (
     <div>
-      <Search func={setFilteredPract} array={practices} />
+      <SearchContainer>
+        <Search func={setFilteredPract} array={practices} />
+      </SearchContainer>
       {filteredPract.length ? renderDom(filteredPract) : renderDom(practices)}
     </div>
   );

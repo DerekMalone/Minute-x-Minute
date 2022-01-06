@@ -11,15 +11,15 @@ export default function PlayerTeamView() {
     margin: 2rem 0;
   `;
 
-  const PlayersTeamTitle = styled.div`
-    justify-content: center;
-    color: #e65722;
-  `;
-
   const PlayerTeamContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+  `;
+
+  const PlayersTeamTitle = styled.div`
+    justify-content: center;
+    color: #e65722;
   `;
 
   const PlayerTeamCards = styled.div`
@@ -41,7 +41,7 @@ export default function PlayerTeamView() {
   return (
     <PlayersCardsContainer>
       <PlayersTeamTitle>
-        <h1>Coaches Team View Page</h1>
+        <h1>Players Teams</h1>
       </PlayersTeamTitle>
       <PlayerTeamContainer>
         {teams ? (

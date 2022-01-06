@@ -11,7 +11,6 @@ import { updatePractice } from '../../helpers/practiceHelpers';
 const initialState = {
   firebaseKey: '',
   duration: '',
-  dateTime: '',
   name: '',
   coachID: '',
   teamID: '',
@@ -28,7 +27,6 @@ function CoachesPracticeForm() {
       getSinglePractice(fbKey).then((obj) => {
         setFormInput({
           firebaseKey: obj?.firebaseKey,
-          duration: Number(obj?.duration),
           dateTime: obj?.dateTime,
           name: obj?.name,
           coachID: obj?.coachID,
@@ -87,19 +85,6 @@ function CoachesPracticeForm() {
         </div>
         <div>
           <input
-            type="number"
-            className="form-control"
-            name="duration"
-            value={formInput.duration || ''}
-            onChange={handleChange}
-            placeholder="Duration of Practice in minutes."
-            min="1"
-            max="240"
-            required
-          />
-        </div>
-        <div>
-          <input
             type="text"
             className="form-control"
             name="name"
@@ -122,7 +107,6 @@ CoachesPracticeForm.propTypes = {
   practice: PropTypes.shape({
     firebaseKey: PropTypes.string,
     duration: PropTypes.number,
-    dateTime: PropTypes.number,
     name: PropTypes.string,
     coachID: PropTypes.string,
     teamID: PropTypes.string,
