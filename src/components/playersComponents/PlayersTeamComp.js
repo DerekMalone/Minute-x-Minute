@@ -5,8 +5,6 @@ import { Card, CardTitle } from 'reactstrap';
 
 const PlayersTeamComp = ({ team }) => {
   const PlayersCardStyle = styled.div`
-    justify-content: center;
-    width: 80%;
     margin: 1rem;
   `;
   return (

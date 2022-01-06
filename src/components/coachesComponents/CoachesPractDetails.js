@@ -14,14 +14,11 @@ const CoachesPractDetails = () => {
 
   const PractDetailsContainer = styled.div`
     display: flex;
-    width: 100%;
     margin: 2rem 0;
   `;
 
   const PractDetailStyling = styled.div`
-    flex-wrap: wrap;
     width: 100%;
-    justify-content: center;
 
     h2 {
       color: #007a4b;
@@ -42,13 +39,14 @@ const CoachesPractDetails = () => {
   `;
 
   const DrillsContainer = styled.div`
-    flex-wrap: wrap;
     justify-content: center;
-    margin: 2rem;
+    margin: 2rem 10%;
     width: 80%;
   `;
 
-  const PractDrills = styled.div``;
+  const PractDrills = styled.div`
+    justify-content: center;
+  `;
 
   useEffect(() => {
     let isMounted = true;

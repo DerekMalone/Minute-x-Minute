@@ -13,14 +13,11 @@ const PlayerPractDetails = () => {
 
   const PlayerPractDetailsContainer = styled.div`
     display: flex;
-    width: 100%;
     margin: 2rem 0;
   `;
 
   const PlayersPractDetailStyling = styled.div`
-    flex-wrap: wrap;
     width: 100%;
-    justify-content: center;
 
     h2 {
       color: #007a4b;
@@ -41,9 +38,8 @@ const PlayerPractDetails = () => {
   `;
 
   const PlayersDrillsContainer = styled.div`
-    flex-wrap: wrap;
     justify-content: center;
-    margin: 2rem;
+    margin: 2rem 10%;
     width: 80%;
   `;
 

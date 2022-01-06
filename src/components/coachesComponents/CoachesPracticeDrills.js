@@ -16,7 +16,8 @@ export default function CoachesPracticeDrills({ drill }) {
   const history = useHistory();
 
   const DrillCardStyle = styled.div`
-    margin: 1rem;
+    margin: 1rem 10%;
+    width: 100%;
 
     h5 {
       color: black;

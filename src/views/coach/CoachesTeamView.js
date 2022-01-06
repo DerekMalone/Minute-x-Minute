@@ -7,15 +7,15 @@ import { getTeams } from '../../helpers/index';
 export default function CoachesTeamView() {
   const [teams, setTeams] = useState([]);
 
+  const TeamCardsContainer = styled.div`
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  `;
+
   const TeamContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-  `;
-
-  const TeamCardsContainer = styled.div`
-    flex-wrap: wrap;
-    margin: 2rem 0;
   `;
 
   const TeamTitle = styled.h1`
@@ -27,12 +27,6 @@ export default function CoachesTeamView() {
     justify-content: center;
     width: 80%;
     margin: 1rem;
-  `;
-
-  const TeamLink = styled.div`
-    justify-content: center;
-    margin: 2rem 0;
-    width: 40rem;
   `;
 
   useEffect(() => {
@@ -47,7 +41,7 @@ export default function CoachesTeamView() {
 
   return (
     <TeamCardsContainer>
-      <TeamTitle>Coaches Team View Page</TeamTitle>
+      <TeamTitle>Coaches Teams</TeamTitle>
       <TeamContainer>
         {teams ? (
           <>
@@ -57,19 +51,19 @@ export default function CoachesTeamView() {
                   <CoachesTeamComp key={team.teamName} team={team} />
                 ))}
               </div>
-              <TeamLink>
+              <div>
                 <Link to="/teamForm" type="button" className="btn btn-success">
                   Create a New Team
                 </Link>
-              </TeamLink>
+              </div>
             </TeamCards>
           </>
         ) : (
           <>
             <h4>No Team yet</h4>
-            <button type="button" className="btn btn-success">
+            <Link to="/teamForm" type="button" className="btn btn-success">
               Create a New Team
-            </button>
+            </Link>
           </>
         )}
       </TeamContainer>

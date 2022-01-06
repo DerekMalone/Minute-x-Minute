@@ -7,7 +7,8 @@ import {
 
 export default function PlayerPracticeDrills({ drill }) {
   const DrillCardStyle = styled.div`
-    margin: 1rem;
+    margin: 1rem 10%;
+    width: 80%;
 
     h5 {
       color: black;

@@ -12,7 +12,6 @@ export default function PlayerDrillsView() {
   const PlayerDrillContainer = styled.div`
     display: flex;
     margin: 2rem 0;
-    width: 100%;
   `;
 
   const PlayerDrillStyling = styled.div`
@@ -30,8 +29,19 @@ export default function PlayerDrillsView() {
   `;
 
   const PlayerDrillCardsContainer = styled.div`
-    margin: 2rem;
+    width: 100%;
+    justify-content: center;
+  `;
+
+  const DrillCards = styled.div`
+    justify-content: center;
+    margin: 2rem 10%;
     width: 80%;
+  `;
+
+  const SearchContainer = styled.div`
+    width: 80%;
+    margin: 0 10%;
   `;
 
   useEffect(() => {
@@ -54,9 +64,11 @@ export default function PlayerDrillsView() {
           </PlayerTitleContainer>
           <CardGroup>
             <PlayerDrillCardsContainer>
-              {array.map((drill) => (
-                <PlayerDrillsComp key={drill.name} drill={drill} />
-              ))}
+              <DrillCards>
+                {array.map((drill) => (
+                  <PlayerDrillsComp key={drill.name} drill={drill} />
+                ))}
+              </DrillCards>
             </PlayerDrillCardsContainer>
           </CardGroup>
         </PlayerDrillStyling>
@@ -67,7 +79,9 @@ export default function PlayerDrillsView() {
   return (
     <div>
       {/* Passes necessary props to Search */}
-      <Search func={setFilteredDrills} array={drills} />
+      <SearchContainer>
+        <Search func={setFilteredDrills} array={drills} />
+      </SearchContainer>
       {/* Checks to see if filteredDrills has a lenght, if yes, passes filteredDrills through else passed drills though */}
       {filteredDrills.length ? renderDom(filteredDrills) : renderDom(drills)}
     </div>

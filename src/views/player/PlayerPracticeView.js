@@ -12,13 +12,12 @@ export default function PlayerPracticeView() {
   const PlayersDrillsContainer = styled.div`
     display: flex;
     margin: 2rem 0;
-    width: 100%;
   `;
 
   const PlayersDrillStyling = styled.div`
-  flex-wrap: wrap;
-  width: 100%;
-  align: center:
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   `;
 
   const PlayerTitleContainer = styled.div`
@@ -27,6 +26,16 @@ export default function PlayerPracticeView() {
     h1 {
       color: #e65722;
     }
+  `;
+
+  const PracticeCards = styled.div`
+    justify-content: center;
+    margin: 2rem;
+  `;
+
+  const SearchContainer = styled.div`
+    width: 80%;
+    margin: 0 10%;
   `;
 
   useEffect(() => {
@@ -47,7 +56,7 @@ export default function PlayerPracticeView() {
             <h1>Practice View</h1>
           </PlayerTitleContainer>
           <>
-            <div>
+            <PracticeCards>
               <CardGroup>
                 {array.map((practice) => (
                   <PlayersPracticeComponent
@@ -56,7 +65,7 @@ export default function PlayerPracticeView() {
                   />
                 ))}
               </CardGroup>
-            </div>
+            </PracticeCards>
           </>
         </PlayersDrillStyling>
       </PlayersDrillsContainer>
@@ -65,7 +74,9 @@ export default function PlayerPracticeView() {
 
   return (
     <div>
-      <Search func={setFilteredPract} array={practices} />
+      <SearchContainer>
+        <Search func={setFilteredPract} array={practices} />
+      </SearchContainer>
       {filteredPract.length ? renderDom(filteredPract) : renderDom(practices)}
     </div>
   );

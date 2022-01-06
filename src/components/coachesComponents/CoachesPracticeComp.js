@@ -32,6 +32,10 @@ const CoachesPracticeComp = ({ practice }) => {
     margin: 1rem 0 0 0;
   `;
 
+  const PractDrillsStyle = styled.div`
+    width: 80%;
+  `;
+
   useEffect(() => {
     let isMounted = true;
     (async () => {
@@ -93,11 +97,11 @@ const CoachesPracticeComp = ({ practice }) => {
           </Button>
         </PracticeBtnGrp>
       </PracticeCompStyle>
-      <div>
+      <PractDrillsStyle>
         {practDrills.map((drill) => (
           <CoachesPracticeDrills key={drill.name} drill={drill} />
         ))}
-      </div>
+      </PractDrillsStyle>
     </>
   );
 };
