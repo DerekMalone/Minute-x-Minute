@@ -35,6 +35,7 @@ const PlayerPractDetails = () => {
     justify-content: center;
     width: 100%;
     height: 10%;
+    margin: 1rem;
   `;
 
   const PlayersDrillsContainer = styled.div`
