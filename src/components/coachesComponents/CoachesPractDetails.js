@@ -40,7 +40,7 @@ const CoachesPractDetails = () => {
 
   const DrillsContainer = styled.div`
     justify-content: center;
-    margin: 2rem 10%;
+    margin: 2rem;
     width: 80%;
   `;
 
